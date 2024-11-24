@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:10:54 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/23 18:01:26 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/11/24 13:03:24 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,63 @@ int	check_extension(char *file_name, char *ext, int len)
 	return (0);
 }
 
+int	check_colors(char *line)
+{
+	int	comma;
+	int	i;
+
+	i = 0;
+	comma = 0;
+	while (line[i] != '\0' && line[i] != ' ')
+		i++;
+
+	while (line[i] != '\0')
+	{
+		if (line[i] == ',')
+			comma++;
+		if ((ft_isdigit(line[i]) == 0 && line[i] != ',') && comma < 4)
+			return (-1);
+		i++;
+	}
+	if (comma < 3)
+		return (-1);
+	return (1);
+}
+
+int ft_check_map_limits(char *file_name)
+{
+	int len;
+	int hight;
+	int fd;
+	char *line;
+
+	len = 0;
+	hight = 0;
+	fd = open(file_name, O_RDONLY);
+	line = get_next_line(fd);
+	while (line != NULL && line[0] != '1')
+	{
+		if (line[0] == 'F' || line[0] == 'P')
+			if(check_colors(line) == -1)
+				return (free(line), get_next_line(-1),printf("you fucked up the colors\n"), -1);
+		free(line);
+		line = get_next_line(fd);
+	}
+	//#TODO fix valgrinds leaks on get next line
+	while (line != NULL)
+	{
+		if (len < ft_strlen(line))
+			len = ft_strlen(line);
+		hight++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (line)
+		free(line);
+	printf("len: %d, hight: %d\n", len, hight);
+	close(fd);
+	return (1);
+}
 int	ft_check_file_name(char *file_name)
 {
 	int	fd;
@@ -32,12 +89,8 @@ int	ft_check_file_name(char *file_name)
 
 	fd = 0;
 	len = ft_strlen(file_name);
-	// i need to check if its .cub at the start;
-				// if (len < 4 || (len == 4 && !ft_strncmp(file_name, ".cub", 5)))
-				// 	return (ft_printf("my dude just .cub is not supported\n"));
 	if(check_extension(file_name, ".cub", len) == -1)
 		return (ft_printf("bad name\n"));
-	// try to open it;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (printf("Cant open this file\n"));
@@ -47,16 +100,15 @@ int	ft_check_file_name(char *file_name)
 int	main(int argc, char *argv[])
 {
 	/*
-	 * it needs to be 1 arg
-	 * the file must be .cub
-	 * but can just .cub be accepted?
-	 * must limit max map btw memory isn't free now is it?
+
+	 	* must limit max map btw memory isn't free now is it?
+
 	 */
 	argc--;
 	if(argc == 1)
 	{
 		ft_check_file_name(argv[1]);
-
+		ft_check_map_limits(argv[1]);
 
 	}
 	else if (argc > 1)
