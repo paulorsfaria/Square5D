@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:10:54 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/24 13:03:24 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:27:18 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,41 @@ int	check_colors(char *line)
 
 	i = 0;
 	comma = 0;
+	printf("%s\n", line);
 	while (line[i] != '\0' && line[i] != ' ')
 		i++;
-
-	while (line[i] != '\0')
+	if (line[i] == ' ')
+		i++;
+	while (line[i] != '\0' && line[i] != '\n')
 	{
 		if (line[i] == ',')
+		{
 			comma++;
-		if ((ft_isdigit(line[i]) == 0 && line[i] != ',') && comma < 4)
+			i++;
+		}
+		if (line[i] != '\n' && ft_isdigit(line[i]) == 0 && line[i] != ',' && line[i] != ' ')
 			return (-1);
-		i++;
+		if (line[i] != '\0' && line[i] != '\n')
+			i++;
 	}
-	if (comma < 3)
+	if (comma != 2)
 		return (-1);
 	return (1);
 }
 
 int ft_check_map_limits(char *file_name)
 {
-	int len;
-	int hight;
+	t_area	area;
 	int fd;
 	char *line;
 
-	len = 0;
-	hight = 0;
+	area.row = 0;
+	area.column = 0;
 	fd = open(file_name, O_RDONLY);
 	line = get_next_line(fd);
 	while (line != NULL && line[0] != '1')
 	{
-		if (line[0] == 'F' || line[0] == 'P')
+		if (line[0] == 'F' || line[0] == 'C')
 			if(check_colors(line) == -1)
 				return (free(line), get_next_line(-1),printf("you fucked up the colors\n"), -1);
 		free(line);
@@ -70,15 +75,15 @@ int ft_check_map_limits(char *file_name)
 	//#TODO fix valgrinds leaks on get next line
 	while (line != NULL)
 	{
-		if (len < ft_strlen(line))
-			len = ft_strlen(line);
-		hight++;
+		if (area.row < ft_strlen(line))
+			area.row = ft_strlen(line);
+		area.column++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	if (line)
 		free(line);
-	printf("len: %d, hight: %d\n", len, hight);
+	printf("len: %d, hight: %d\n", area.row, area.column);
 	close(fd);
 	return (1);
 }
@@ -100,9 +105,7 @@ int	ft_check_file_name(char *file_name)
 int	main(int argc, char *argv[])
 {
 	/*
-
 	 	* must limit max map btw memory isn't free now is it?
-
 	 */
 	argc--;
 	if(argc == 1)

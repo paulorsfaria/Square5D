@@ -23,4 +23,31 @@
 # include <fcntl.h>
 # include "../libraries/libft/includes/libft.h"
 
+typedef struct s_color
+{
+	int *f[3];
+	int	*c[3];
+}			t_color;
+
+
+typedef struct s_area
+{
+	int row;
+	int	column;
+}			t_area;
+
+typedef struct s_wall_textures
+{
+	int	so;
+	int	no;
+	int	we;
+	int	ea;
+}			t_wall_textures;
+
+typedef struct s_map
+{
+	t_color colors;
+	t_wall_textures textures;
+}			t_map;
+
 #endif
