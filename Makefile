@@ -3,7 +3,7 @@ CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -fr
 
-PARSE = srcs/main.c \
+PARSE = srcs/main.c srcs/val_colors.c srcs/ft_freedom.c srcs/ft_error_central\
 
 SRCS = $(PARSE)
 

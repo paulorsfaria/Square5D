@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:10:54 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/25 09:27:18 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:52:17 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,41 +25,17 @@ int	check_extension(char *file_name, char *ext, int len)
 	return (0);
 }
 
-int	check_colors(char *line)
-{
-	int	comma;
-	int	i;
 
-	i = 0;
-	comma = 0;
-	printf("%s\n", line);
-	while (line[i] != '\0' && line[i] != ' ')
-		i++;
-	if (line[i] == ' ')
-		i++;
-	while (line[i] != '\0' && line[i] != '\n')
-	{
-		if (line[i] == ',')
-		{
-			comma++;
-			i++;
-		}
-		if (line[i] != '\n' && ft_isdigit(line[i]) == 0 && line[i] != ',' && line[i] != ' ')
-			return (-1);
-		if (line[i] != '\0' && line[i] != '\n')
-			i++;
-	}
-	if (comma != 2)
-		return (-1);
-	return (1);
-}
 
 int ft_check_map_limits(char *file_name)
 {
 	t_area	area;
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
+	bool	test[2];
 
+	test[0] = false;
+	test[1] = false;
 	area.row = 0;
 	area.column = 0;
 	fd = open(file_name, O_RDONLY);
@@ -67,8 +43,18 @@ int ft_check_map_limits(char *file_name)
 	while (line != NULL && line[0] != '1')
 	{
 		if (line[0] == 'F' || line[0] == 'C')
+		{
+			if (line[1] != ' ')
+				return (-1);
+			if ((line[0] == 'F' && test[0] == true) || (line[0] == 'C' && test[1] == true))
+				return (free(line), ft_finish_get(fd), printf("to many colors\n"), -1);
+			if (line[0] == 'F')
+				test[0] = true;
+			if (line[0] == 'C')
+				test[1] = true;
 			if(check_colors(line) == -1)
-				return (free(line), get_next_line(-1),printf("you fucked up the colors\n"), -1);
+				return (free(line), ft_finish_get(fd),printf("you fucked up the colors\n"), -1);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -87,6 +73,7 @@ int ft_check_map_limits(char *file_name)
 	close(fd);
 	return (1);
 }
+
 int	ft_check_file_name(char *file_name)
 {
 	int	fd;
@@ -102,6 +89,7 @@ int	ft_check_file_name(char *file_name)
 	close(fd);
 	return 0;
 }
+
 int	main(int argc, char *argv[])
 {
 	/*
@@ -112,7 +100,6 @@ int	main(int argc, char *argv[])
 	{
 		ft_check_file_name(argv[1]);
 		ft_check_map_limits(argv[1]);
-
 	}
 	else if (argc > 1)
 		ft_printf("Only one input is acepted");

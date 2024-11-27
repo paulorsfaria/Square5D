@@ -21,6 +21,8 @@
 # include <ctype.h>
 # include <string.h>
 # include <fcntl.h>
+#include <stdbool.h>
+
 # include "../libraries/libft/includes/libft.h"
 
 typedef struct s_color
@@ -50,4 +52,21 @@ typedef struct s_map
 	t_wall_textures textures;
 }			t_map;
 
+typedef struct s_validation
+{
+	bool	colors;
+	bool	walls;
+	bool	map;
+}		t_validation;
+
+
+
+//funcs colors
+int	check_colors(char *line);
+
+// ft_freedom
+void ft_finish_get(int fd);
+
+//error central
+int	error_central(int error_code, int fd);
 #endif
