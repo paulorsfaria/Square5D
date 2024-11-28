@@ -12,9 +12,9 @@
 
 #include "../headers/cub3d.h"
 
-void ft_finish_get(int fd)
+void	ft_finish_get(int fd)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
 	while (line != NULL )
@@ -22,4 +22,14 @@ void ft_finish_get(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+}
+
+void	free_temp_map(t_temp_map *map)
+{
+	int i;
+
+	i = -1;
+	while (++i < map->size)
+		free(map->lines);
+	free(map);
 }

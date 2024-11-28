@@ -23,13 +23,20 @@
 # include <fcntl.h>
 #include <stdbool.h>
 
-# include "../libraries/libft/includes/libft.h"
+# include "../libraries/libft/libft.h"
 
+#include "../libraries/printf/ft_printf.h"
 typedef struct s_color
 {
 	int *f[3];
 	int	*c[3];
 }			t_color;
+
+typedef struct s_temp_map
+{
+	char  	**lines;
+	int 	size;
+}			t_temp_map;
 
 
 typedef struct s_area
@@ -59,14 +66,20 @@ typedef struct s_validation
 	bool	map;
 }		t_validation;
 
-
+//validations
+int	check_extension(char *file_name, char *ext, int len);
+int	ft_check_map(t_temp_map *file);
+int	ft_check_file_name(char *file_name);
 
 //funcs colors
-int	check_colors(char *line);
+int	check_colors(char *line, t_temp_map *map);
 
 // ft_freedom
 void ft_finish_get(int fd);
+void	free_temp_map(t_temp_map *map);
 
 //error central
-int	error_central(int error_code, int fd);
+int	error_central(int error_code, t_temp_map *map);
+
+
 #endif

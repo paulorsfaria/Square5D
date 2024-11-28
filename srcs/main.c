@@ -12,100 +12,72 @@
 
 #include "../headers/cub3d.h"
 
-int	check_extension(char *file_name, char *ext, int len)
+/*
+	 * must limit max map btw memory isn't free now is it?
+ */
+
+int	ft_get_file_size(char *file)
 {
-	if (len < 4)
-		return (-1);
-	if (ft_strncmp(file_name, ext, 5) == 0)
-		return (-1);
-	while (len > 0 && file_name[len]!= '.')
-		len--;
-	if (ft_strncmp(&file_name[len], ext, 5))
-		return (ft_printf("invalid name\n"));
-	return (0);
-}
+	int fd;
+	int size;
+	char *line;
 
-
-
-int ft_check_map_limits(char *file_name)
-{
-	t_area	area;
-	int		fd;
-	char	*line;
-	bool	test[2];
-
-	test[0] = false;
-	test[1] = false;
-	area.row = 0;
-	area.column = 0;
-	fd = open(file_name, O_RDONLY);
+	size = 0;
+	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (line != NULL && line[0] != '1')
-	{
-		if (line[0] == 'F' || line[0] == 'C')
-		{
-			if (line[1] != ' ')
-				return (-1);
-			if ((line[0] == 'F' && test[0] == true) || (line[0] == 'C' && test[1] == true))
-				return (free(line), ft_finish_get(fd), printf("to many colors\n"), -1);
-			if (line[0] == 'F')
-				test[0] = true;
-			if (line[0] == 'C')
-				test[1] = true;
-			if(check_colors(line) == -1)
-				return (free(line), ft_finish_get(fd),printf("you fucked up the colors\n"), -1);
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	//#TODO fix valgrinds leaks on get next line
 	while (line != NULL)
 	{
-		if (area.row < ft_strlen(line))
-			area.row = ft_strlen(line);
-		area.column++;
+		size++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	if (line)
 		free(line);
-	printf("len: %d, hight: %d\n", area.row, area.column);
 	close(fd);
-	return (1);
-}
+	return (size);
 
-int	ft_check_file_name(char *file_name)
+}
+char **ft_get_file(char *file_name, t_temp_map *map)
 {
-	int	fd;
-	int	len;
+	char **file;
+	int fd;
+	int i;
 
-	fd = 0;
-	len = ft_strlen(file_name);
-	if(check_extension(file_name, ".cub", len) == -1)
-		return (ft_printf("bad name\n"));
+	i = 0;
+	map->size = ft_get_file_size(file_name);
+	file = ft_calloc(map->size + 1, sizeof(char *));
 	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (printf("Cant open this file\n"));
+	while (i < map->size)
+	{
+		file[i] = get_next_line(fd);
+		i++;
+	}
+	file[i] = NULL;
 	close(fd);
-	return 0;
+	return (file);
 }
-
 int	main(int argc, char *argv[])
 {
-	/*
-	 	* must limit max map btw memory isn't free now is it?
-	 */
+	t_temp_map *file;
 	argc--;
-	if(argc == 1)
+	if (argc == 1)
 	{
 		ft_check_file_name(argv[1]);
-		ft_check_map_limits(argv[1]);
+		file = calloc(sizeof(t_temp_map), 1);
+		file->lines = ft_get_file(argv[1], file);
+		ft_check_map(file);
+
 	}
 	else if (argc > 1)
-		ft_printf("Only one input is acepted");
+		ft_printf_err("Only one input is accepted");
 	else
-		ft_printf("Please use:\n./cub3d pwd/to/the/map\n");
+		ft_printf_err("Please use:\n./cub3d pwd/to/the/map\n");
 	ft_printf("Thank you for using our print a square services\n");
-
 	return (0);
 }
+
+
+/*
+ *
+ * #TO-DO only read one time the map into a char **
+ */

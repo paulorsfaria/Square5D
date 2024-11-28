@@ -2,17 +2,18 @@ NAME = square5d
 CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -fr
+LIBFT = ./libraries/libft/libft.a
+PRINTF = ./libraries/printf/ft_printf.a
 
-PARSE = srcs/main.c srcs/val_colors.c srcs/ft_freedom.c srcs/ft_error_central\
+PARSE = srcs/main.c srcs/val_colors.c srcs/ft_freedom.c srcs/ft_error_central.c \
+		srcs/val_extensions.c srcs/validations.c
 
 SRCS = $(PARSE)
 
 OBJS = ${SRCS:.c=.o}
 
-${NAME}: ${OBJS}
-		${MAKE} --no-print-directory -C ./libraries/libft
-		cp ./libraries/libft/libft.a .
-		${CC} ${CFLAGS} ${OBJS} libft.a -o ${NAME} -lreadline
+$(NAME): $(LIBFT) $(PRINTF)  $(OBJS) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 clean:
 	${MAKE} --no-print-directory clean -C ./libraries/libft
@@ -26,5 +27,12 @@ fclean: clean
 all: ${NAME}
 
 re: fclean all
+
+$(LIBFT):
+	cd libraries && cd libft && make 
+	
+$(PRINTF):
+	cd libraries && cd printf && make 
+
 
 .PHONY: all clear fclean re
