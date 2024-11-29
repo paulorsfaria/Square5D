@@ -12,7 +12,7 @@ SRCS = $(PARSE)
 
 OBJS = ${SRCS:.c=.o}
 
-$(NAME): $(LIBFT) $(PRINTF)  $(OBJS) 
+$(NAME): $(LIBFT) $(PRINTF)  $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 clean:
@@ -29,10 +29,10 @@ all: ${NAME}
 re: fclean all
 
 $(LIBFT):
-	cd libraries && cd libft && make 
-	
+	cd libraries && cd libft && make
+
 $(PRINTF):
-	cd libraries && cd printf && make 
+	cd libraries && cd printf && make
 
 
 .PHONY: all clear fclean re

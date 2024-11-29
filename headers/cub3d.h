@@ -21,11 +21,10 @@
 # include <ctype.h>
 # include <string.h>
 # include <fcntl.h>
-#include <stdbool.h>
-
+# include <stdbool.h>
 # include "../libraries/libft/libft.h"
+# include "../libraries/printf/ft_printf.h"
 
-#include "../libraries/printf/ft_printf.h"
 typedef struct s_color
 {
 	int *f[3];
