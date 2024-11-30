@@ -65,20 +65,18 @@ typedef struct s_validation
 	bool	map;
 }		t_validation;
 
-//validations
-int	check_extension(char *file_name, char *ext, int len);
-int	ft_check_map(t_temp_map *file);
-int	ft_check_file_name(char *file_name);
+// ft_getters
+int		ft_get_file_size(char *file);
 
-//funcs colors
-int	check_colors(char *line, t_temp_map *map);
+//val_exts
+int		ft_check_file_name(char *file_name);
 
-// ft_freedom
-void ft_finish_get(int fd);
-void	free_temp_map(t_temp_map *map);
+//ft_error
+int		error_central(int error_code, t_temp_map *map);
 
-//error central
-int	error_central(int error_code, t_temp_map *map);
+void	ft_get_map(t_temp_map **map, char *file);
+
+void	free_map(t_temp_map **map);
 
 
 #endif
