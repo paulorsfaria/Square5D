@@ -43,19 +43,16 @@ typedef struct s_area
 	int	column;
 }			t_area;
 
-typedef struct s_wall_textures
+typedef struct s_valid_map
 {
-	int	so;
-	int	no;
-	int	we;
-	int	ea;
-}			t_wall_textures;
-
-typedef struct s_map
-{
-	t_color			colors;
-	t_wall_textures	textures;
-}			t_map;
+	bool	so;
+	bool	no;
+	bool	we;
+	bool	ea;
+	bool	c;
+	bool	f;
+	bool	player;
+}			t_valid_map;
 
 typedef struct s_validation
 {
@@ -64,7 +61,7 @@ typedef struct s_validation
 	bool	map;
 }		t_validation;
 
-// ft_getters
+//ft_getters
 int		ft_get_file_size(char *file);
 
 //val_exts
@@ -73,10 +70,13 @@ int		ft_check_file_name(char *file_name);
 //ft_error
 int		error_central(int error_code, t_temp_map *map);
 
+//ft_getters
 void	ft_get_map(t_temp_map **map, char *file);
 
+//freedom city
 void	free_map(t_temp_map **map);
 
+//color validations
 int		col_val(t_temp_map *map, int i);
 
 #endif

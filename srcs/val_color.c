@@ -63,6 +63,26 @@ int	check_colors(char *line, t_temp_map *map)
 	return (1);
 }
 
+void 	ft_invalid_start(t_temp_map *map, char c, int i)
+{
+	static t_valid_map	*valid;
+
+	 valid = NULL;
+	valid = ft_calloc(sizeof (t_valid_map) + 1);
+
+	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == 'F' || c == 'C' || c == '1')
+	{
+		if ((c == 'S' || c == 'N') && map->lines[i][1] != 'O')
+			error_central(-7, map);
+		if (c == 'W' && map->lines[i][1] != 'E')
+			error_central(-7, map);
+		if (c == 'E' && map->lines[i][1] != 'A')
+			error_central(-7, map);
+		if ((c == 'F' || c == 'C') && map->lines[i][1] != ' ')
+			error_central(-7, map);
+	}
+}
+
 int	col_val(t_temp_map *map, int i)
 {
 	bool	color[2];
@@ -73,6 +93,7 @@ int	col_val(t_temp_map *map, int i)
 	{
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
+			ft_invalid_start(map, map->lines[i][0], i);
 			if (map->lines[i][1] != ' ')
 				return (error_central(-3, map));
 			if ((map->lines[i][0] == 'F' && color[0] == true)
