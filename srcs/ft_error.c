@@ -16,11 +16,8 @@
 
 int	error_central(int error_code, t_temp_map *map)
 {
-	free(map);
-
-//	if (map)
-//		free_temp_map(map);
-
+	if (map)
+		free_map(&map);
 	if (error_code == -1)
 		ft_printf_err("invalid file\n");
 	if (error_code == -2)

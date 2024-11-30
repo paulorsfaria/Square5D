@@ -6,7 +6,7 @@ LIBFT = ./libraries/libft/libft.a
 PRINTF = ./libraries/printf/ft_printf.a
 
 PARSE = srcs/main.c srcs/ft_error.c srcs/val_extensions.c  srcs/ft_getters.c\
-		srcs/ft_freedoom.c
+		srcs/ft_freedoom.c srcs/val_color.c
 
 SRCS = $(PARSE)
 

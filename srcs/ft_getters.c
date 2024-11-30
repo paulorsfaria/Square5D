@@ -14,9 +14,9 @@
 
 int	ft_get_file_size(char *file)
 {
-	int fd;
-	int size;
-	char *line;
+	int		fd;
+	int		size;
+	char	*line;
 
 	size = 0;
 	fd = open(file, O_RDONLY);
@@ -35,18 +35,21 @@ int	ft_get_file_size(char *file)
 
 void	ft_get_map(t_temp_map **map, char *file)
 {
-	int	fd = 0;
-	int	i = 0;
-	int j = 0;
+	int	fd;
+	int	i;
+	int	j;
 
+	fd = 0;
+	i = 0;
+	j = 0;
 	(*map)->lines = ft_calloc(sizeof(char *), (*map)->size + 1);
 	fd = open (file, O_RDONLY);
 	if (fd < 0)
 		error_central(-1, (*map));
 	(*map)->lines[i] = get_next_line(fd);
-	while((*map)->lines[i] != NULL)
+	while ((*map)->lines[i] != NULL)
 	{
-		while((*map)->lines[i][j] != '\0' &&(*map)->lines[i][j] != '\n')
+		while ((*map)->lines[i][j] != '\0' && (*map)->lines[i][j] != '\n')
 			j++;
 		(*map)->lines[i][j] = '\0';
 		j = 0;

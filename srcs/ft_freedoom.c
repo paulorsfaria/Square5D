@@ -14,9 +14,10 @@
 
 void	free_map(t_temp_map **map)
 {
+	int	i;
 
-	int i = 0;
-	if(map)
+	i = 0;
+	if (map)
 	{
 		while (i <= (*map)->size)
 		{

@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "../headers/cub3d.h"
+#include "../headers/cub3d.h"
 
 int	main(int argc, char *argv[])
 {
-	t_temp_map *map;
+	t_temp_map	*map;
+
 	argc--;
 	if (argc == 1)
 	{
@@ -22,12 +23,7 @@ int	main(int argc, char *argv[])
 		map = calloc(sizeof(t_temp_map), 1);
 		map->size = ft_get_file_size(argv[1]);
 		ft_get_map(&map, argv[1]);
-		int	i = 0;
-		while((*map).lines[i] != NULL)
-		{
-			printf("%s\n", (*map).lines[i]);
-			i++;
-		}
+		col_val(map, 0);
 		free_map(&map);
 	}
 	else if (argc > 1)

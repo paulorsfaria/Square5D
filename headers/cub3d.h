@@ -78,5 +78,7 @@ void	ft_get_map(t_temp_map **map, char *file);
 
 void	free_map(t_temp_map **map);
 
+int	col_val(t_temp_map *map, int i);
+
 
 #endif
