@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:49:43 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/30 16:07:14 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:15:53 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_get_map(t_temp_map **map, char *file)
 	i = 0;
 	j = 0;
 	(*map)->lines = ft_calloc(sizeof(char *), (*map)->size + 1);
+	(*map)->valid = ft_calloc(sizeof(t_valid_map) , 1);
 	fd = open (file, O_RDONLY);
 	if (fd < 0)
 		error_central(-1, (*map));

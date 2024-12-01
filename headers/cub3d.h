@@ -31,18 +31,6 @@ typedef struct s_color
 	int	*c[3];
 }			t_color;
 
-typedef struct s_temp_map
-{
-	char	**lines;
-	int		size;
-}			t_temp_map;
-
-typedef struct s_area
-{
-	int	row;
-	int	column;
-}			t_area;
-
 typedef struct s_valid_map
 {
 	bool	so;
@@ -53,6 +41,19 @@ typedef struct s_valid_map
 	bool	f;
 	bool	player;
 }			t_valid_map;
+
+typedef struct s_temp_map
+{
+	char		**lines;
+	int			size;
+	t_valid_map *valid;
+}			t_temp_map;
+
+typedef struct s_area
+{
+	int	row;
+	int	column;
+}			t_area;
 
 typedef struct s_validation
 {
@@ -78,5 +79,6 @@ void	free_map(t_temp_map **map);
 
 //color validations
 int		col_val(t_temp_map *map, int i);
-
+int 	ft_invalid_start(t_temp_map *map, char c, int i);
+int		check_extension(char *file_name, char *ext, int len);
 #endif

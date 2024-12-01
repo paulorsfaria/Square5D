@@ -25,6 +25,7 @@ void	free_map(t_temp_map **map)
 			i++;
 		}
 		free((*map)->lines);
+		free((*map)->valid);
 		free(*map);
 	}
 }
