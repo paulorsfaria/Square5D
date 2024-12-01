@@ -43,23 +43,30 @@ void	check_bool_final(t_temp_map *map)
 void	check_textures(t_temp_map *map)
 {
 	int i;
+	int j;
 	char **temp;
-
+	static int flag = 0;
 
 	i = 0;
-	while(map->lines[i] != 0)
+	while(map->lines[i] != NULL)
 	{
 		while(map->lines[i][0] != 'S' && map->lines[i][0] != 'N'
 			&& map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
 			i++;
-		if (map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
+		flag++;
+		if (flag < 4 && map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
 			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E')
 			error_central(-2, map);
 		temp = ft_split(map->lines[i], ' ');
-		check_extension(temp[1], ".cub", ft_strlen(temp[1]));
-		
+		if (!temp[1])
+			check_extension(temp[1], ".xpm", ft_strlen(temp[1]));
+		j = 0;
+		printf("%s\n", map->lines[i]);
+		while (temp[j] != NULL)
+			free(temp[j++]);
+		free(temp);
+		i++;
 	}
-
 }
 
 int	main(int argc, char *argv[])
