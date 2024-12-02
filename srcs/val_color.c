@@ -120,11 +120,6 @@ int	col_val(t_temp_map *map, int i)
 				return (ft_printf_err("Error in colors\n"),error_central(0, map));
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
-			if (map->lines[i][1] != ' ')
-				return (error_central(-3, map));
-			if ((map->lines[i][0] == 'F' && color[0] == true)
-				|| (map->lines[i][0] == 'C' && color[1] == true))
-				return (error_central(-3, map));
 			if (map->lines[i][0] == 'F')
 				color[0] = true;
 			if (map->lines[i][0] == 'C')

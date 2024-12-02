@@ -54,14 +54,16 @@ void	check_textures(t_temp_map *map)
 			&& map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
 			i++;
 		flag++;
-		if (flag < 4 && map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
-			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E')
+		if (map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
+			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E' )
 			error_central(-2, map);
+		if (flag == 4 && map->lines[i + 1][0] != '\0')
+			error_central(-8, map);
 		temp = ft_split(map->lines[i], ' ');
-		if (!temp[1])
+		if (temp[1])
 			check_extension(temp[1], ".xpm", ft_strlen(temp[1]));
 		j = 0;
-		printf("%s\n", map->lines[i]);
+		//printf("%s\n", map->lines[i]);
 		while (temp[j] != NULL)
 			free(temp[j++]);
 		free(temp);
