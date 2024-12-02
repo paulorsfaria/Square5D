@@ -63,7 +63,6 @@ void	check_textures(t_temp_map *map)
 		if (temp[1])
 			check_extension(temp[1], ".xpm", ft_strlen(temp[1]));
 		j = 0;
-		//printf("%s\n", map->lines[i]);
 		while (temp[j] != NULL)
 			free(temp[j++]);
 		free(temp);
