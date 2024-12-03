@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:30:14 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/12/01 21:55:35 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:25:26 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_extension(char *file_name, char *ext, int len)
 	while (len > 0 && file_name[len] != '.')
 		len--;
 	if (ft_strncmp(&file_name[len], ext, 5))
-		return (error_central(-3, NULL));
+		return (-1);
 	return (0);
 }
 

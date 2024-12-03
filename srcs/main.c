@@ -68,8 +68,28 @@ void	check_textures(t_temp_map *map)
 		if (flag == 4 && map->lines[i + 1][0] != '\0')
 			error_central(-8, map);
 		temp = ft_split(map->lines[i], ' ');
-		if (temp[1])
-			check_extension(temp[1], ".xpm", ft_strlen(temp[1]));
+		if (temp[0] && temp[1] && temp[1][0] == '.')
+			error_central(-9, map);
+		if (!temp[1])
+		{	j = 0;
+			while (temp[j] != NULL)
+				free(temp[j++]);
+			free(temp);
+			error_central(-9, map);
+
+		}
+		if (temp[0] && temp[1])
+		{
+			if (check_extension(temp[1], ".xpm", ft_strlen(temp[1])) == -1) {
+
+				j = 0;
+				while (temp[j] != NULL)
+					free(temp[j++]);
+				free(temp);
+				ft_printf_err("invalid ext\n");
+				error_central(0, map);
+			}
+		}
 		j = 0;
 		while (temp[j] != NULL)
 			free(temp[j++]);
