@@ -34,6 +34,8 @@ int	error_central(int error_code, t_temp_map *map)
 		ft_printf_err("invalid characters\n");
 	if (error_code == -8)
 		ft_printf_err("Missing newline\n");
+	if (error_code == -8)
+		ft_printf_err("Missing textures\n");
 	ft_printf("Thank you for using our print a square services\n");
 	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:45:00 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/29 13:45:00 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:21:09 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,23 @@ void	check_textures(t_temp_map *map)
 	static int flag = 0;
 
 	i = 0;
+	while(map->lines[i] != NULL && map->lines[i][0] != 'S' && map->lines[i][0] != 'N'
+		  && map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
+		i++;
 	while(map->lines[i] != NULL)
 	{
-		while(map->lines[i][0] != 'S' && map->lines[i][0] != 'N'
-			&& map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
-			i++;
+
 		flag++;
-		if (map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
-			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E' )
-			error_central(-2, map);
+		if (map->lines[i + 1] != NULL && map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
+			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E')
+		{
+			if (flag < 3)
+			{
+				printf("SEG HERE?\n");
+				error_central(-9, map);
+			}
+
+		}
 		if (flag == 4 && map->lines[i + 1][0] != '\0')
 			error_central(-8, map);
 		temp = ft_split(map->lines[i], ' ');

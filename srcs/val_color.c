@@ -125,7 +125,7 @@ int	col_val(t_temp_map *map, int i)
 			if (map->lines[i][0] == 'C')
 				color[1] = true;
 			if (check_colors(map->lines[i], map) == -1)
-				return (error_central(-4, map));
+				return (printf("%d\n", i), error_central(-4, map));
 		}
 		i++;
 	}
