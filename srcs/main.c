@@ -51,27 +51,24 @@ void	check_textures(t_temp_map *map)
 	while(map->lines[i] != NULL && map->lines[i][0] != 'S' && map->lines[i][0] != 'N'
 		  && map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
 		i++;
-	while(map->lines[i] != NULL)
+	while(map->lines[i] != NULL && (map->lines[i][0] == 'S' || map->lines[i][0] == 'N'
+		|| map->lines[i][0] == 'W' || map->lines[i][0] == 'E'))
 	{
-
+		printf("%d | %s\n", i, map->lines[i]);
 		flag++;
 		if (map->lines[i + 1] != NULL && map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
 			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E')
-		{
 			if (flag < 3)
-			{
-				printf("SEG HERE?\n");
 				error_central(-9, map);
-			}
-
-		}
 		if (flag == 4 && map->lines[i + 1][0] != '\0')
 			error_central(-8, map);
 		temp = ft_split(map->lines[i], ' ');
 		if (temp[0] && temp[1] && temp[1][0] == '.')
 			error_central(-9, map);
-		if (!temp[1])
-		{	j = 0;
+		if (!temp[0] || !temp[1])
+		{
+		printf("%d | %s\n",i,  temp[0]);
+			j = 0;
 			while (temp[j] != NULL)
 				free(temp[j++]);
 			free(temp);
