@@ -40,6 +40,19 @@ void	check_bool_final(t_temp_map *map)
 		print_error("colors", map);
 }
 
+//	win->north_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
+//				"./assets/north_texture.xpm", &win->north_texture.width,
+//				&win->north_texture.height);
+//		win->north_texture.addr = mlx_get_data_addr(win->north_texture.mlx_img,
+//				&win->north_texture.bpp, &win->north_texture.line_len,
+//				&win->north_texture.endian);
+
+void val_text(char **temp, t_temp_map *map)
+{
+	(void)temp;
+	(void)map;
+}
+
 void	check_textures(t_temp_map *map)
 {
 	int i;
@@ -68,6 +81,7 @@ void	check_textures(t_temp_map *map)
 		if (!temp[0] || !temp[1])
 		{
 		printf("%d | %s\n",i,  temp[0]);
+			val_text(temp, map);
 			j = 0;
 			while (temp[j] != NULL)
 				free(temp[j++]);

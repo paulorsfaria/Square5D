@@ -114,10 +114,10 @@ int	col_val(t_temp_map *map, int i)
 	{
 		if (map->lines[i][0] == 'F')
 			if ((i > 0 && map->lines[i - 1][0] != 'C' ) && (map->lines[i + 1][0] != 'C'))
-				return (ft_printf_err("Error in colors\n"),error_central(0, map));
+				return (ft_printf_err("Error in colors\n"), error_central(0, map));
 		if (map->lines[i][0] == 'C')
 			if ((i > 0 && map->lines[i - 1][0] != 'F') &&  (map->lines[i + 1][0] != 'F'))
-				return (ft_printf_err("Error in colors\n"),error_central(0, map));
+				return (ft_printf_err("Error in colors\n"), error_central(0, map));
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
 			if (map->lines[i][0] == 'F')

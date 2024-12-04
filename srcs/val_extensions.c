@@ -33,7 +33,7 @@ int	ft_check_file_name(char *file_name)
 	fd = 0;
 	len = (int)ft_strlen(file_name);
 	if (check_extension(file_name, ".cub", len) == -1)
-		return (printf("asd\n"),error_central(-1, NULL));
+		return (error_central(-1, NULL));
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (error_central(-2, NULL));
