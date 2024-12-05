@@ -12,19 +12,28 @@
 
 #include "../headers/cub3d.h"
 
-void first_check(t_temp_map *map)
+void	first_check(t_temp_map *map)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (map->lines[i] != NULL)
 	{
+		while (map->lines[i][j] == ' ')
+			j++;
+		j--;
+		if (map->lines[i][j] == ' ' && (map->lines[i][j] != '1'
+			|| map->lines[i][j] != '0'))
+			map->lines[i] = ft_strtrim(map->lines[i], " ");
+		j = 0;
 		ft_invalid_start(map, map->lines[i][0], i);
 		i++;
 	}
 }
 
-void print_error(char *str, t_temp_map *map)
+void	print_error(char *str, t_temp_map *map)
 {
 	ft_printf_err("Missing %s\n", str);
 	error_central(0, map);
@@ -38,75 +47,6 @@ void	check_bool_final(t_temp_map *map)
 		print_error("textures", map);
 	if (map->valid->c == false || map->valid->f == false)
 		print_error("colors", map);
-}
-
-//	win->north_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-//				"./assets/north_texture.xpm", &win->north_texture.width,
-//				&win->north_texture.height);
-//		win->north_texture.addr = mlx_get_data_addr(win->north_texture.mlx_img,
-//				&win->north_texture.bpp, &win->north_texture.line_len,
-//				&win->north_texture.endian);
-
-void val_text(char **temp, t_temp_map *map)
-{
-	(void)temp;
-	(void)map;
-}
-
-void	check_textures(t_temp_map *map)
-{
-	int i;
-	int j;
-	char **temp;
-	static int flag = 0;
-
-	i = 0;
-	while(map->lines[i] != NULL && map->lines[i][0] != 'S' && map->lines[i][0] != 'N'
-		  && map->lines[i][0] != 'W' && map->lines[i][0] != 'E')
-		i++;
-	while(map->lines[i] != NULL && (map->lines[i][0] == 'S' || map->lines[i][0] == 'N'
-		|| map->lines[i][0] == 'W' || map->lines[i][0] == 'E'))
-	{
-		printf("%d | %s\n", i, map->lines[i]);
-		flag++;
-		if (map->lines[i + 1] != NULL && map->lines[i + 1][0] != 'S' && map->lines[i][0] != 'N'
-			&& map->lines[i + 1][0] != 'W' && map->lines[i + 1][0] != 'E')
-			if (flag < 3)
-				error_central(-9, map);
-		if (flag == 4 && map->lines[i + 1][0] != '\0')
-			error_central(-8, map);
-		temp = ft_split(map->lines[i], ' ');
-		if (temp[0] && temp[1] && temp[1][0] == '.')
-			error_central(-9, map);
-		if (!temp[0] || !temp[1])
-		{
-		printf("%d | %s\n",i,  temp[0]);
-			val_text(temp, map);
-			j = 0;
-			while (temp[j] != NULL)
-				free(temp[j++]);
-			free(temp);
-			error_central(-9, map);
-
-		}
-		if (temp[0] && temp[1])
-		{
-			if (check_extension(temp[1], ".xpm", ft_strlen(temp[1])) == -1) {
-
-				j = 0;
-				while (temp[j] != NULL)
-					free(temp[j++]);
-				free(temp);
-				ft_printf_err("invalid ext\n");
-				error_central(0, map);
-			}
-		}
-		j = 0;
-		while (temp[j] != NULL)
-			free(temp[j++]);
-		free(temp);
-		i++;
-	}
 }
 
 int	main(int argc, char *argv[])

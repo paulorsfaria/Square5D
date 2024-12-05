@@ -66,27 +66,19 @@ int	check_colors(char *line, t_temp_map *map)
 bool	check_bools(bool val, t_temp_map *map)
 {
 	if (val == true)
-		return(error_central(-7, map));
-	else
-		return (true);
+		return (error_central(-7, map));
+	return (true);
 }
 
-int 	ft_invalid_start(t_temp_map *map, char c, int i)
+int	ft_invalid_start(t_temp_map *map, char c, int i)
 {
-	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == 'F' || c == 'C' || c == '1' || c == '\0')
-	{
-		if ((c == 'S' || c == 'N') && map->lines[i][1] != 'O')
-			return (error_central(-7, map));
-		if (c == 'W' && map->lines[i][1] != 'E')
-			return (error_central(-7, map));
-		if (c == 'E' && map->lines[i][1] != 'A')
-			return (error_central(-7, map));
-		if ((c == 'F' || c == 'C') && map->lines[i][1] != ' ')
-			return (error_central(-7, map));
-	}
+	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == 'F'
+		|| c == 'C' || c == '1' || c == '\0')
+		check_next_char(map, c, i);
 	else
 		error_central(-7, map);
-	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == 'F' || c == 'C' || c == '1')
+	if (c == 'S' || c == 'N' || c == 'W' || c == 'E'
+		|| c == 'F' || c == 'C' || c == '1')
 	{
 		if (c == 'S' && map->lines[i][1] == 'O')
 			map->valid->so = check_bools(map->valid->so, map);
@@ -96,7 +88,7 @@ int 	ft_invalid_start(t_temp_map *map, char c, int i)
 			map->valid->we = check_bools(map->valid->we, map);
 		if (c == 'E' && map->lines[i][1] == 'A')
 			map->valid->ea = check_bools(map->valid->ea, map);
-		if (c == 'F'  && map->lines[i][1] == ' ')
+		if (c == 'F' && map->lines[i][1] == ' ')
 			map->valid->f = check_bools(map->valid->f, map);
 		if (c == 'C' && map->lines[i][1] == ' ')
 			map->valid->c = check_bools(map->valid->c, map);
@@ -113,11 +105,15 @@ int	col_val(t_temp_map *map, int i)
 	while (map->lines[i] != NULL && map->lines[i][0] != '1')
 	{
 		if (map->lines[i][0] == 'F')
-			if ((i > 0 && map->lines[i - 1][0] != 'C' ) && (map->lines[i + 1][0] != 'C'))
-				return (ft_printf_err("Error in colors\n"), error_central(0, map));
+			if ((i > 0 && map->lines[i - 1][0] != 'C' )
+				&& (map->lines[i + 1][0] != 'C'))
+				return (ft_printf_err("Error in colors\n"),
+					error_central(0, map));
 		if (map->lines[i][0] == 'C')
-			if ((i > 0 && map->lines[i - 1][0] != 'F') &&  (map->lines[i + 1][0] != 'F'))
-				return (ft_printf_err("Error in colors\n"), error_central(0, map));
+			if ((i > 0 && map->lines[i - 1][0] != 'F')
+				&& (map->lines[i + 1][0] != 'F'))
+				return (ft_printf_err("Error in colors\n"),
+					error_central(0, map));
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
 			if (map->lines[i][0] == 'F')
@@ -125,7 +121,7 @@ int	col_val(t_temp_map *map, int i)
 			if (map->lines[i][0] == 'C')
 				color[1] = true;
 			if (check_colors(map->lines[i], map) == -1)
-				return (printf("%d\n", i), error_central(-4, map));
+				return (error_central(-4, map));
 		}
 		i++;
 	}
