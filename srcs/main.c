@@ -16,6 +16,7 @@ void	first_check(t_temp_map *map)
 {
 	int	i;
 	int	j;
+	char *temp;
 
 	i = 0;
 	j = 0;
@@ -23,20 +24,22 @@ void	first_check(t_temp_map *map)
 	{
 		while (map->lines[i][j] == ' ')
 			j++;
-		j--;
-		if (map->lines[i][j] == ' ' && (map->lines[i][j] != '1'
-			|| map->lines[i][j] != '0'))
-			map->lines[i] = ft_strtrim(map->lines[i], " ");
+		if (j > 0)
+			j--;
+		if (map->lines[i][j] == ' ' && (map->lines[i][j + 1] != '\0'
+		&& map->lines[i][j + 1] != '1' && map->lines[i][j + 1] != '0'))
+        {
+            temp = ft_strtrim(map->lines[i], " ");
+            free(map->lines[i]);
+            map->lines[i] = temp;
+        }
 		j = 0;
-		ft_invalid_start(map, map->lines[i][0], i);
-		i++;
+        while (map->lines[i][j] == ' ')
+            j++;
+		ft_invalid_start(map, map->lines[i][j], i);
+        j = 0;
+        i++;
 	}
-}
-
-void	print_error(char *str, t_temp_map *map)
-{
-	ft_printf_err("Missing %s\n", str);
-	error_central(0, map);
 }
 
 void	check_bool_final(t_temp_map *map)
@@ -48,6 +51,24 @@ void	check_bool_final(t_temp_map *map)
 	if (map->valid->c == false || map->valid->f == false)
 		print_error("colors", map);
 }
+void check_map(t_temp_map *map)
+{
+    int i = -1;
+    int j = 0;
+
+    while (map->lines[++i])
+    {
+        while(map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
+            j++;
+        if (map->lines[i][j] == '1' || map->lines[i][j] == '0' )
+            printf("%s\n", map->lines[i]);
+        j=0;
+    }
+    j++;
+
+}
+
+
 
 int	main(int argc, char *argv[])
 {
@@ -63,6 +84,7 @@ int	main(int argc, char *argv[])
 		check_bool_final(map);
 		col_val(map, 0);
 		check_textures(map);
+		check_map(map);
 		free_map(&map);
 	}
 	else if (argc > 1)

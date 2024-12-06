@@ -70,6 +70,7 @@ int		ft_check_file_name(char *file_name);
 
 //ft_error
 int		error_central(int error_code, t_temp_map *map);
+void	print_error(char *str, t_temp_map *map);
 
 //ft_getters
 void	ft_get_map(t_temp_map **map, char *file);

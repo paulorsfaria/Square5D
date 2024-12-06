@@ -41,3 +41,10 @@ int	error_central(int error_code, t_temp_map *map)
 	ft_printf("Thank you for using our print a square services\n");
 	exit(EXIT_FAILURE);
 }
+
+
+void	print_error(char *str, t_temp_map *map)
+{
+	ft_printf_err("Missing %s\n", str);
+	error_central(0, map);
+}
