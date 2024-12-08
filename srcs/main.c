@@ -81,8 +81,8 @@ void	check_map(t_temp_map *map, int start, int end)
 	player = 0;
 	/*
 	 * i fucked up the part of the mal when there are white line in the middle wtf...
-	 *
-	 *
+	 *just give up
+	 *its easier
 	 */
 	while (map->lines[++i])
 	{
