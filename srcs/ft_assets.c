@@ -51,19 +51,21 @@ void	line_checker(char **line, t_temp_map *map)
 
 int	while_checker(t_temp_map *map, const int i, const int flag)
 {
-	int j = 0;
+	int	j;
+	int	color;
+
+	j = 0;
+	color = 0;
 	if (flag == 1)
 	{
 		while(map->lines[i][j] != '\0')
 		{
-			if(map->lines[i][j] == '1' || map->lines[i][j] == '0')
-			{
-				print_error("Missing textures", map);
-
-			}
+			if (map->lines[i][j] == 'C' || map->lines[i][j] == 'F')
+				color = 1;
+			if (color == 0 && (map->lines[i][j] == '1' || map->lines[i][j] == '0'))
+				print_error("textures", map);
 			j++;
 		}
-
 		if (map->lines[i] != NULL && map->lines[i][0] != 'S'
 			&& map->lines[i][0] != 'N' && map->lines[i][0] != 'W'
 			&& map->lines[i][0] != 'E')
