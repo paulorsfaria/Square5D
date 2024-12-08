@@ -47,22 +47,48 @@ void	check_bool_final(t_temp_map *map)
 	if (map->valid->c == false || map->valid->f == false)
 		print_error("colors", map);
 }
+void	ft_flood_test(t_temp_map *map, int start, int end)
+{
 
-void	check_map(t_temp_map *map)
+	(void)map;
+	(void)start;
+	(void)end;
+
+
+}
+void	check_map(t_temp_map *map, int start, int end)
 {
 	int	i;
 	int	j;
+	int player;
 
 	i = -1;
 	j = 0;
+	player = 0;
+
 	while (map->lines[++i])
 	{
 		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
 			j++;
-		printf("%s\n", map->lines[i]);
+		if(player > 1)
+			error_central(-12, map);
+		if ((start == 0 && map->lines[i][j] == '1') || map->lines[i][j] == '0')
+			start = i;
+		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
+			end = i;
+		while(map->lines[i][++j] != '\0')
+			if(map->lines[i][j] == 'N' || map->lines[i][j] == 'S'
+				|| map->lines[i][j] == 'E' || map->lines[i][j] == 'W')
+				player++;
 		j = 0;
 	}
-	j++;
+	if(player == 0)
+		error_central(-12, map);
+	printf("%s\n",map->lines[start]);
+	printf("%s\n",map->lines[end]);
+	ft_flood_test(map, start, end);
+	printf("%d | %d\n", start, end);
+
 }
 
 static int	is_whitespace(char c)
@@ -113,7 +139,7 @@ int	main(int argc, char *argv[])
 		check_bool_final(map);
 		col_val(map, 0);
 		check_textures(map, 0, 0, NULL);
-		check_map(map);
+		check_map(map, 0, 0);
 		free_map(&map);
 	}
 	else if (argc > 1)
