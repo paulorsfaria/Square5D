@@ -6,20 +6,16 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:45:00 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/12/03 12:21:09 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:27:00 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-void	first_check(t_temp_map *map)
+void	first_check(t_temp_map *map, int i, int j)
 {
-	int	i;
-	int	j;
-	char *temp;
+	char	*temp;
 
-	i = 0;
-	j = 0;
 	while (map->lines[i] != NULL)
 	{
 		while (map->lines[i][j] == ' ')
@@ -28,47 +24,80 @@ void	first_check(t_temp_map *map)
 			j--;
 		if (map->lines[i][j] == ' ' && (map->lines[i][j + 1] != '\0'
 		&& map->lines[i][j + 1] != '1' && map->lines[i][j + 1] != '0'))
-        {
-            temp = ft_strtrim(map->lines[i], " ");
-            free(map->lines[i]);
-            map->lines[i] = temp;
-        }
+		{
+			temp = ft_remove_extra_spaces(map->lines[i], map);
+			free(map->lines[i]);
+			map->lines[i] = temp;
+		}
 		j = 0;
-        while (map->lines[i][j] == ' ')
-            j++;
+		while (map->lines[i][j] == ' ')
+			j++;
 		ft_invalid_start(map, map->lines[i][j], i);
-        j = 0;
-        i++;
+		j = 0;
+		i++;
 	}
 }
 
 void	check_bool_final(t_temp_map *map)
 {
-	first_check(map);
+	first_check(map, 0, 0);
 	if (map->valid->so == false || map->valid->no == false
 		|| map->valid->we == false || map->valid->ea == false)
 		print_error("textures", map);
 	if (map->valid->c == false || map->valid->f == false)
 		print_error("colors", map);
 }
-void check_map(t_temp_map *map)
+
+void	check_map(t_temp_map *map)
 {
-    int i = -1;
-    int j = 0;
+	int	i;
+	int	j;
 
-    while (map->lines[++i])
-    {
-        while(map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
-            j++;
-        if (map->lines[i][j] == '1' || map->lines[i][j] == '0' )
-            printf("%s\n", map->lines[i]);
-        j=0;
-    }
-    j++;
-
+	i = -1;
+	j = 0;
+	while (map->lines[++i])
+	{
+		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
+			j++;
+		printf("%s\n", map->lines[i]);
+		j = 0;
+	}
+	j++;
 }
 
+static int	is_whitespace(char c)
+{
+	return (c == ' ' || (c >= 9 && c <= 13));
+}
 
+char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
+{
+	char	*line;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	line = ft_calloc(sizeof(char), ft_strlen(str) + 1);
+	if (!line)
+	{
+		ft_printf_err("Error in calloc\n");
+		error_central(0, map);
+	}
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i])
+	{
+		while (str[i] && !is_whitespace(str[i]))
+			line[j++] = str[i++];
+		while (is_whitespace(str[i]))
+			i++;
+		if (i > 0 && str[i] != '\0')
+			line[j++] = ' ';
+	}
+	line[j] = '\0';
+	return (line);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -83,7 +112,7 @@ int	main(int argc, char *argv[])
 		ft_get_map(&map, argv[1]);
 		check_bool_final(map);
 		col_val(map, 0);
-		check_textures(map);
+		check_textures(map, 0, 0, NULL);
 		check_map(map);
 		free_map(&map);
 	}

@@ -89,6 +89,8 @@ void	check_next_char(t_temp_map *map,int c, int i);
 
 
 //ft_assets
-void	check_textures(t_temp_map *map);
+void	check_textures(t_temp_map *map, int i, int j, char **temp);
+
+char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
 
 #endif

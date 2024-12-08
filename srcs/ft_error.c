@@ -25,7 +25,7 @@ int	error_central(int error_code, t_temp_map *map)
 	if (error_code == -3)
 		ft_printf_err("To many colors\n");
 	if (error_code == -4)
-		ft_printf_err("bad color\n");
+		ft_printf_err("Error in colors\n");
 	if (error_code == -5)
 		ft_printf_err("Missing colors\n");
 	if (error_code == -6)
@@ -38,10 +38,11 @@ int	error_central(int error_code, t_temp_map *map)
 		ft_printf_err("Missing textures\n");
 	if (error_code == -10)
 		ft_printf_err("invalid texture\n");
+	if (error_code == -11)
+		ft_printf_err("Error in colors or assets\n");
 	ft_printf("Thank you for using our print a square services\n");
 	exit(EXIT_FAILURE);
 }
-
 
 void	print_error(char *str, t_temp_map *map)
 {
