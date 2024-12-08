@@ -71,19 +71,18 @@ void	check_map(t_temp_map *map, int start, int end)
 		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
 			j++;
 		if(player > 1)
-			error_central(-12, map);
+		{ printf("asd%d\n", player);error_central(-12, map); }
 		if ((start == 0 && map->lines[i][j] == '1') || map->lines[i][j] == '0')
 			start = i;
 		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
 			end = i;
 		while(map->lines[i][++j] != '\0')
-			if(map->lines[i][j] == 'N' || map->lines[i][j] == 'S'
-				|| map->lines[i][j] == 'E' || map->lines[i][j] == 'W')
+			if(start != 0 && (map->lines[i][j] == 'N' || map->lines[i][j] == 'S'
+				|| map->lines[i][j] == 'E' || map->lines[i][j] == 'W'))
 				player++;
 		j = 0;
 	}
-	if(player == 0)
-		error_central(-12, map);
+	if(player == 0) { printf("asd\n");error_central(-12, map); }
 	printf("%s\n",map->lines[start]);
 	printf("%s\n",map->lines[end]);
 	ft_flood_test(map, start, end);
