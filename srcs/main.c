@@ -48,13 +48,28 @@ void	check_bool_final(t_temp_map *map)
 		print_error("colors", map);
 }
 
-void	ft_flood_test(t_temp_map *map, int start, int end)
+void	ft_flood_map(t_temp_map *map, int start, int end)
 {
 	(void)map;
 	(void)start;
 	(void)end;
-}
 
+	//what to do ???
+	// give up?
+	//yes.
+}
+int ft_check_line(char *str,t_temp_map *map)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] != '\0' && str[i] != '1' && str[i] != '0')
+		i++;
+	printf("%c\n", str[i]);
+	if (str[i] == '\0')
+		error_central(-13, map);
+	return 0;
+}
 void	check_map(t_temp_map *map, int start, int end)
 {
 	int	i;
@@ -64,6 +79,11 @@ void	check_map(t_temp_map *map, int start, int end)
 	i = -1;
 	j = 0;
 	player = 0;
+	/*
+	 * i fucked up the part of the mal when there are white line in the middle wtf...
+	 *
+	 *
+	 */
 	while (map->lines[++i])
 	{
 		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
@@ -72,7 +92,9 @@ void	check_map(t_temp_map *map, int start, int end)
 			start = i;
 		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
 			end = i;
-		while (map->lines[i][++j] != '\0')
+		else if (start != 0)
+			break;
+		while (map->lines[i][++j] != '\0' )
 			if (start != 0 && (map->lines[i][j] == 'N'
 				|| map->lines[i][j] == 'S' || map->lines[i][j] == 'E'
 				|| map->lines[i][j] == 'W'))
@@ -81,7 +103,7 @@ void	check_map(t_temp_map *map, int start, int end)
 	}
 	if (player != 1)
 		error_central(-12, map);
-	ft_flood_test(map, start, end);
+	ft_flood_map(map, start, end);
 }
 
 static int	is_whitespace(char c)

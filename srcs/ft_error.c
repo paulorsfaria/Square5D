@@ -42,6 +42,8 @@ int	error_central(int error_code, t_temp_map *map)
 		ft_printf_err("Error in colors or assets\n");
 	if (error_code == -12)
 		ft_printf_err("Error with the player\n");
+	if (error_code == -13)
+		ft_printf_err("Error with the map\n");
 	ft_printf("Thank you for using our print a square services\n");
 	exit(EXIT_FAILURE);
 }
