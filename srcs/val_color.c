@@ -22,9 +22,11 @@ int	check_colors_limits(char *line, t_temp_map *map)
 	flag = 0;
 	line[1] = ',';
 	new = ft_split(line, ',');
-	if (ft_atoi(new[1]) > 255 || ft_atoi(new[2]) > 255 || ft_atoi(new[3]) > 255)
+	if (ft_atoi(new[1]) > 255 || ft_atoi(new[2]) > 255
+		|| ft_atoi(new[3]) > 255)
 		flag = -1;
-	if (ft_atoi(new[1]) < 0 || ft_atoi(new[2]) < 0 || ft_atoi(new[3]) < 0)
+	if (ft_atoi(new[1]) < 0 || ft_atoi(new[2]) < 0
+		|| ft_atoi(new[3]) < 0)
 		flag = -1;
 	while (++i < 5)
 		free(new[i]);
@@ -102,15 +104,16 @@ int	col_val(t_temp_map *map, int i)
 
 	color[0] = false;
 	color[1] = false;
-	while (map->lines[i] != NULL && map->lines[i][0] != '1')
+	while (map->lines[++i] != NULL && map->lines[i][0] != '1')
 	{
 		if (map->lines[i][0] == 'F')
 			if ((i > 0 && map->lines[i - 1][0] != 'C' )
-				&& map->lines[i + 1][0] != 'C'&& map->lines[i + 1][0] != '\0')
+				&& map->lines[i + 1][0] != 'C' && map->lines[i + 1][0] != '\0')
 				return (error_central(-4, map));
 		if (map->lines[i][0] == 'C')
 			if ((i > 0 && map->lines[i - 1][0] != 'F')
-				&& (map->lines[i + 1][0] != 'F' && map->lines[i + 1][0] != '\0'))
+				&& (map->lines[i + 1][0] != 'F'
+				&& map->lines[i + 1][0] != '\0'))
 				return (error_central(-4, map));
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
@@ -118,7 +121,6 @@ int	col_val(t_temp_map *map, int i)
 			if (check_colors(map->lines[i], map) == -1)
 				return (error_central(-4, map));
 		}
-		i++;
 	}
 	if (color[0] == false || color[1] == false)
 		return (error_central(-5, map));

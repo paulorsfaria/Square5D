@@ -47,47 +47,41 @@ void	check_bool_final(t_temp_map *map)
 	if (map->valid->c == false || map->valid->f == false)
 		print_error("colors", map);
 }
+
 void	ft_flood_test(t_temp_map *map, int start, int end)
 {
-
 	(void)map;
 	(void)start;
 	(void)end;
-
-
 }
+
 void	check_map(t_temp_map *map, int start, int end)
 {
 	int	i;
 	int	j;
-	int player;
+	int	player;
 
 	i = -1;
 	j = 0;
 	player = 0;
-
 	while (map->lines[++i])
 	{
 		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
 			j++;
-		if(player > 1)
-		{ printf("asd%d\n", player);error_central(-12, map); }
 		if ((start == 0 && map->lines[i][j] == '1') || map->lines[i][j] == '0')
 			start = i;
 		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
 			end = i;
-		while(map->lines[i][++j] != '\0')
-			if(start != 0 && (map->lines[i][j] == 'N' || map->lines[i][j] == 'S'
-				|| map->lines[i][j] == 'E' || map->lines[i][j] == 'W'))
+		while (map->lines[i][++j] != '\0')
+			if (start != 0 && (map->lines[i][j] == 'N'
+				|| map->lines[i][j] == 'S' || map->lines[i][j] == 'E'
+				|| map->lines[i][j] == 'W'))
 				player++;
 		j = 0;
 	}
-	if(player == 0) { printf("asd\n");error_central(-12, map); }
-	printf("%s\n",map->lines[start]);
-	printf("%s\n",map->lines[end]);
+	if (player != 1)
+		error_central(-12, map);
 	ft_flood_test(map, start, end);
-	printf("%d | %d\n", start, end);
-
 }
 
 static int	is_whitespace(char c)
@@ -136,7 +130,7 @@ int	main(int argc, char *argv[])
 		map->size = ft_get_file_size(argv[1]);
 		ft_get_map(&map, argv[1]);
 		check_bool_final(map);
-		col_val(map, 0);
+		col_val(map, -1);
 		check_textures(map, 0, 0, NULL);
 		check_map(map, 0, 0);
 		free_map(&map);
