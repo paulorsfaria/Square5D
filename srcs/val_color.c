@@ -106,11 +106,11 @@ int	col_val(t_temp_map *map, int i)
 	{
 		if (map->lines[i][0] == 'F')
 			if ((i > 0 && map->lines[i - 1][0] != 'C' )
-				&& (map->lines[i + 1][0] != 'C'))
+				&& map->lines[i + 1][0] != 'C'&& map->lines[i + 1][0] != '\0')
 				return (error_central(-4, map));
 		if (map->lines[i][0] == 'C')
 			if ((i > 0 && map->lines[i - 1][0] != 'F')
-				&& (map->lines[i + 1][0] != 'F'))
+				&& (map->lines[i + 1][0] != 'F' && map->lines[i + 1][0] != '\0'))
 				return (error_central(-4, map));
 		if (map->lines[i][0] == 'F' || map->lines[i][0] == 'C')
 		{
