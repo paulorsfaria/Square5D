@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:59:01 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/12/08 15:02:10 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:31:04 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,21 @@ void	line_checker(char **line, t_temp_map *map)
 	}
 }
 
-int	while_checker(const t_temp_map *map, const int i, const int flag)
+int	while_checker(t_temp_map *map, const int i, const int flag)
 {
+	int j = 0;
 	if (flag == 1)
 	{
+		while(map->lines[i][j] != '\0')
+		{
+			if(map->lines[i][j] == '1' || map->lines[i][j] == '0')
+			{
+				print_error("Missing textures", map);
+
+			}
+			j++;
+		}
+
 		if (map->lines[i] != NULL && map->lines[i][0] != 'S'
 			&& map->lines[i][0] != 'N' && map->lines[i][0] != 'W'
 			&& map->lines[i][0] != 'E')
