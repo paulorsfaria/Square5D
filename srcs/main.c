@@ -57,6 +57,7 @@ void	ft_flood_map(t_temp_map *map, int start, int end)
 	//what to do ???
 	// give up?
 	//yes.
+	ignore that just create a function taht goes from the start to the finish  vars and the male it run untill map ont null to aee id there are nay more thinga in it 
 }
 int ft_check_line(char *str,t_temp_map *map)
 {
