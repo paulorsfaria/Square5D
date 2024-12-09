@@ -26,6 +26,7 @@ void	free_map(t_temp_map **map)
 		}
 		free((*map)->lines);
 		free((*map)->valid);
+		free((*map)->player);
 		free(*map);
 	}
 }

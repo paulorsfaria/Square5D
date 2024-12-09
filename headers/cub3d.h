@@ -42,11 +42,18 @@ typedef struct s_valid_map
 	bool	player;
 }			t_valid_map;
 
+typedef struct s_player
+{
+	int	y;
+	int	x;
+}		t_player;
+
 typedef struct s_temp_map
 {
 	char		**lines;
 	int			size;
 	t_valid_map *valid;
+	t_player	*player;
 }			t_temp_map;
 
 typedef struct s_area
