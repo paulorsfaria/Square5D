@@ -12,8 +12,6 @@
 
 #include "../headers/cub3d.h"
 
-#include "../headers/cub3d.h"
-
 int	error_central(int error_code, t_temp_map *map)
 {
 	if (map)

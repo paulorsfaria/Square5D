@@ -93,4 +93,7 @@ void	check_textures(t_temp_map *map, int i, int j, char **temp);
 
 char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
 
+//val_maps
+void	check_map(t_temp_map *map, int start, int end, int i);
+
 #endif

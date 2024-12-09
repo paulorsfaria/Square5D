@@ -48,65 +48,6 @@ void	check_bool_final(t_temp_map *map)
 		print_error("colors", map);
 }
 
-void	ft_flood_map(t_temp_map *map, int start, int end)
-{
-	(void)map;
-	(void)start;
-	(void)end;
-
-	//what to do ???
-	// give up?
-	//yes.
-	ignore that just create a function taht goes from the start to the finish  vars and the male it run untill map ont null to aee id there are nay more thinga in it 
-}
-int ft_check_line(char *str,t_temp_map *map)
-{
-	int	i;
-
-	i = 0;
-	while(str[i] != '\0' && str[i] != '1' && str[i] != '0')
-		i++;
-	printf("%c\n", str[i]);
-	if (str[i] == '\0')
-		error_central(-13, map);
-	return 0;
-}
-void	check_map(t_temp_map *map, int start, int end)
-{
-	int	i;
-	int	j;
-	int	player;
-
-	i = -1;
-	j = 0;
-	player = 0;
-	/*
-	 * i fucked up the part of the mal when there are white line in the middle wtf...
-	 *just give up
-	 *its easier
-	 */
-	while (map->lines[++i])
-	{
-		while (map->lines[i][j] != '\0' && map->lines[i][j] == ' ')
-			j++;
-		if ((start == 0 && map->lines[i][j] == '1') || map->lines[i][j] == '0')
-			start = i;
-		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
-			end = i;
-		else if (start != 0)
-			break;
-		while (map->lines[i][++j] != '\0' )
-			if (start != 0 && (map->lines[i][j] == 'N'
-				|| map->lines[i][j] == 'S' || map->lines[i][j] == 'E'
-				|| map->lines[i][j] == 'W'))
-				player++;
-		j = 0;
-	}
-	if (player != 1)
-		error_central(-12, map);
-	ft_flood_map(map, start, end);
-}
-
 static int	is_whitespace(char c)
 {
 	return (c == ' ' || (c >= 9 && c <= 13));
@@ -155,7 +96,7 @@ int	main(int argc, char *argv[])
 		check_bool_final(map);
 		col_val(map, -1);
 		check_textures(map, 0, 0, NULL);
-		check_map(map, 0, 0);
+		check_map(map, 0, 0, -1);
 		free_map(&map);
 	}
 	else if (argc > 1)

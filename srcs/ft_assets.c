@@ -36,10 +36,7 @@ void	line_checker(char **line, t_temp_map *map)
 	if (line[0] && line[1])
 	{
 		if (line[2])
-		{
-			ft_printf_err("invalid texture");
-			error_central(0, map);
-		}
+			error_central(-10, map);
 		if (check_extension(line[1], ".xpm",
 				ft_strlen(line[1])) == -1)
 		{
