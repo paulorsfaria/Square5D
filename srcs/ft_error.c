@@ -12,7 +12,7 @@
 
 #include "../headers/cub3d.h"
 
-int	error_central_extra(int error_code)
+void	error_central_extra(int error_code)
 {
 	if (error_code == -8)
 		ft_printf_err("Missing newline\n");

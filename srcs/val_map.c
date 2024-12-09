@@ -18,6 +18,12 @@ void	ft_flood_map(t_temp_map *map, int start, int end, t_player *player)
 	(void)start;
 	(void)end;
 	printf("the player is at %d | %d\n", player->y, player->x);
+
+	/*
+	 * first i need to go to the player pos and start from there make everything a
+	 * something random
+	 * 
+	 */
 }
 //what to do ???
 // give up?
