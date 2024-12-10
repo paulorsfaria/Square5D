@@ -46,7 +46,7 @@ int	error_central(int error_code, t_temp_map *map)
 		ft_printf_err("colors must be from 0 to 255\n");
 	if (error_code == -7)
 		ft_printf_err("invalid characters\n");
-	if (error_code < -7)
+	if (error_code > -7)
 		error_central_extra(error_code);
 	ft_printf("Thank you for using our print a square services\n");
 	exit(EXIT_FAILURE);

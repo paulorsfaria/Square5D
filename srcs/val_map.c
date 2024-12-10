@@ -14,20 +14,14 @@
 
 void	ft_flood_map(t_temp_map *map, int start, int end, t_player *player)
 {
-	(void)map;
+
 	(void)start;
 	(void)end;
-	printf("the player is at %d | %d\n", player->y, player->x);
+	map->lines[player->y + start][player->x] = 'F';
 
-	/*
-	 * first i need to go to the player pos and start from there make everything a
-	 * something random
-	 * 
-	 */
+	printf("the %c is at %d | %d\n",player->player, player->y,player->x);
+	printf("the %c\n", map->lines[player->y + start][player->x]);
 }
-//what to do ???
-// give up?
-//yes.
 
 int	player_check(char c, int flag)
 {
@@ -64,19 +58,13 @@ int	ft_check_line(int pos, t_temp_map *map)
 	return (0);
 }
 
-/*
- *I fucked up the part of the mal when there are white line in the middle wtf...
- *just give up
- *its easier
- * ignore that just create a function taht goes from the start to
- * the finish  vars and the make it run untill
- * map ont null to aee id there are nay more thinga in it
- */
-
-void	set_player(t_player *player, int i, int start, int j)
+void	set_player(t_temp_map *map, int i, int start, int j)
 {
-	player->y = i - start;
-	player->x = j;
+	map->player->f_y = start;
+	map->player->f_x = j;
+	map->player->y = i - start;
+	map->player->x = j;
+	map->player->player = map->lines[map->player->y + start][map->player->x];
 }
 
 void	check_map(t_temp_map *map, int start, int end, int i)
@@ -90,7 +78,7 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 		j = 0;
 		while (map->lines[i][j] == ' ')
 			j++;
-		if ((start == 0 && map->lines[i][j] == '1') || map->lines[i][j] == '0')
+		if (start == 0 && (map->lines[i][j] == '1' || map->lines[i][j] == '0'))
 			start = i;
 		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')
 			end = i;
@@ -99,7 +87,7 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 		while (map->lines[i][++j] != '\0')
 			if (start != 0 && (player_check(map->lines[i][j], 0) == 1)
 				&& player_cnt++ > -2)
-				set_player(map->player, i, start, j);
+				set_player(map, i, start, j);
 	}
 	if (player_cnt != 1)
 		error_central(-12, map);

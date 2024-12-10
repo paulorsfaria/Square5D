@@ -44,8 +44,11 @@ typedef struct s_valid_map
 
 typedef struct s_player
 {
-	int	y;
-	int	x;
+	int		f_y;
+	int		f_x;
+	int		y;
+	int		x;
+	char	player;
 }		t_player;
 
 typedef struct s_temp_map
