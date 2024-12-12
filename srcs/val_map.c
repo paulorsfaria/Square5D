@@ -15,12 +15,20 @@
 void	ft_flood_map(t_temp_map *map, int start, int end, t_player *player)
 {
 
-	(void)start;
-	(void)end;
-	map->lines[player->y + start][player->x] = 'F';
 
-	printf("the %c is at %d | %d\n",player->player, player->y,player->x);
-	printf("the %c\n", map->lines[player->y + start][player->x]);
+
+
+
+/*
+ * this will have to be a recursive function so may hve to do some
+ *
+ */
+//	(void)start;
+//	(void)end;
+
+//	map->lines[player->y + start][player->x] = 'F';
+//	printf("the %c is at %d | %d\n",player->player, player->y,player->x);
+//	printf("the %c\n", map->lines[player->y + start][player->x]);
 }
 
 int	player_check(char c, int flag)
