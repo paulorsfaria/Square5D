@@ -60,19 +60,6 @@ typedef struct s_temp_map
 	t_player	*player;
 }			t_temp_map;
 
-typedef struct s_area
-{
-	int	row;
-	int	column;
-}			t_area;
-
-typedef struct s_validation
-{
-	bool	colors;
-	bool	walls;
-	bool	map;
-}		t_validation;
-
 //ft_getters
 int		ft_get_file_size(char *file);
 
@@ -85,6 +72,7 @@ void	print_error(char *str, t_temp_map *map);
 
 //ft_getters
 void	ft_get_map(t_temp_map **map, char *file);
+int	ft_get_start_map(t_temp_map *map);
 
 //freedom city
 void	free_map(t_temp_map **map);
@@ -111,5 +99,9 @@ void	check_map(t_temp_map *map, int start, int end, int i);
 void	flood(t_temp_map *map, int y, int x, int map_size);
 int		ft_check_first_last(char **map, int i);
 int		check_the_sides(char **map, int y, int map_size);
+void	ft_do_flood(t_temp_map *map, int start, int end, int i);
+
+//ft_checkers
+void	first_check(t_temp_map *map, int i, int j);
 
 #endif

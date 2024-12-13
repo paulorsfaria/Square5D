@@ -60,3 +60,14 @@ void	ft_get_map(t_temp_map **map, char *file)
 	(*map)->lines[i + 1] = NULL;
 	close(fd);
 }
+
+int	ft_get_start_map(t_temp_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->lines[i][0] != ' ' && map->lines[i][0] != '1'
+			&& map->lines[i][0] != '0')
+		i++;
+	return (i);
+}

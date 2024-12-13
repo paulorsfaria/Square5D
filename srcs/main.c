@@ -12,32 +12,6 @@
 
 #include "../headers/cub3d.h"
 
-void	first_check(t_temp_map *map, int i, int j)
-{
-	char	*temp;
-
-	while (map->lines[i] != NULL)
-	{
-		while (map->lines[i][j] == ' ')
-			j++;
-		if (j > 0)
-			j--;
-		if (map->lines[i][j] == ' ' && (map->lines[i][j + 1] != '\0'
-		&& map->lines[i][j + 1] != '1' && map->lines[i][j + 1] != '0'))
-		{
-			temp = ft_remove_extra_spaces(map->lines[i], map);
-			free(map->lines[i]);
-			map->lines[i] = temp;
-		}
-		j = 0;
-		while (map->lines[i][j] == ' ')
-			j++;
-		ft_invalid_start(map, map->lines[i][j], i);
-		j = 0;
-		i++;
-	}
-}
-
 void	check_bool_final(t_temp_map *map)
 {
 	first_check(map, 0, 0);
@@ -82,28 +56,27 @@ char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
 	return (line);
 }
 
-int	main(int argc, char *argv[])
+void	ft_validations(char *argv[])
 {
 	t_temp_map	*map;
 
+	ft_check_file_name(argv[1]);
+	map = ft_calloc(sizeof(t_temp_map), 1);
+	map->player = ft_calloc(sizeof(t_player), 1);
+	map->size = ft_get_file_size(argv[1]);
+	ft_get_map(&map, argv[1]);
+	check_bool_final(map);
+	col_val(map, -1);
+	check_textures(map, 0, 0, NULL);
+	check_map(map, 0, 0, -1);
+	free_map(&map);
+}
+
+int	main(int argc, char *argv[])
+{
 	argc--;
 	if (argc == 1)
-	{
-		ft_check_file_name(argv[1]);
-		map = ft_calloc(sizeof(t_temp_map), 1);
-		map->player = ft_calloc(sizeof(t_player), 1);
-		map->size = ft_get_file_size(argv[1]);
-		ft_get_map(&map, argv[1]);
-		check_bool_final(map);
-		col_val(map, -1);
-		check_textures(map, 0, 0, NULL);
-		check_map(map, 0, 0, -1);
-
-        int j = -1;
-        while(map->lines[++j])
-            printf("%s\n", map->lines[j]);
-		free_map(&map);
-	}
+		ft_validations(argv);
 	else if (argc > 1)
 		ft_printf_err("Only one input is accepted");
 	else

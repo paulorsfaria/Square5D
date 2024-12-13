@@ -75,7 +75,7 @@ bool	check_bools(bool val, t_temp_map *map)
 int	ft_invalid_start(t_temp_map *map, char c, int i)
 {
 	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == 'F'
-		|| c == 'C' || c == '1' || c == '0'|| c == '\0')
+		|| c == 'C' || c == '1' || c == '0' || c == '\0')
 		check_next_char(map, c, i);
 	else
 		error_central(-7, map);

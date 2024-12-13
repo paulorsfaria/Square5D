@@ -80,15 +80,6 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 	}
 	if (player_cnt != 1)
 		error_central(-12, map);
-	map->start = 0;
-	while (map->lines[map->start][0] != ' '
-	&& map->lines[map->start][0] != '1'
-			&& map->lines[map->start][0] != '1')
-		map->start++;
-	flood(map, map->player->f_y, map->player->f_x, i);
-	if (ft_check_first_last(map->lines, start) == -1
-		|| check_the_sides(map->lines,map->start + 1, end) == -1)
-		error_central(-14, map);
-
-
+	map->start = ft_get_start_map(map);
+	ft_do_flood(map, start, end, i);
 }
