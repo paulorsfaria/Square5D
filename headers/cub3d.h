@@ -107,4 +107,9 @@ char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
 //val_maps
 void	check_map(t_temp_map *map, int start, int end, int i);
 
+//flood
+void	flood(t_temp_map *map, int y, int x, int map_size);
+int		ft_check_first_last(char **map, int i);
+int		check_the_sides(char **map, int y, int map_size);
+
 #endif

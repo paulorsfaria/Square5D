@@ -10,7 +10,7 @@ PRINTF = ./libraries/printf/ft_printf.a
 
 PARSE = srcs/main.c srcs/ft_error.c srcs/val_extensions.c  srcs/ft_getters.c\
 		srcs/ft_freedoom.c srcs/val_color.c srcs/ft_assets.c srcs/val_colo_utils.c \
-		srcs/val_map.c
+		srcs/val_map.c srcs/flood_map.c
 
 SRCS = $(PARSE)
 
