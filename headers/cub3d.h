@@ -55,6 +55,7 @@ typedef struct s_temp_map
 {
 	char		**lines;
 	int			size;
+	int			start;
 	t_valid_map *valid;
 	t_player	*player;
 }			t_temp_map;
