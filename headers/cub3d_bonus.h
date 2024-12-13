@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: diogosan <diogosan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 15:09:32 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/11/23 17:17:59 by paulo-do         ###   ########.fr       */
+/*   Created: 2024/09/18 17:56:41 by diogosan          #+#    #+#             */
+/*   Updated: 2024/12/03 16:26:46 by diogosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+# include "libraries/libft/libft.h"
+# include "libraries/printf/ft_printf.h"
 # include <stdio.h>
-# include <limits.h>
-# include <ctype.h>
-# include <string.h>
-# include <fcntl.h>
-# include <stdbool.h>
-# include "../minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
-# include "../libraries/libft/libft.h"
-# include "../libraries/printf/ft_printf.h"
 
 # define PI 3.14159265359
 # define P2 1.57079632679 // PI/2
@@ -42,45 +34,12 @@
 # define HEIGHT 1080
 
 # define SQUARE 64
+# define SQUARE_MINI 16
 # define PLAYER_SIZE 20
+# define PLAYER_SIZE_MINI 10
 # define OBSTACLE_COLOR 0x000000
 
 # define DR 0.000545415 //(FOV / WIDTH)
-
-typedef struct s_color
-{
-	int	*f[3];
-	int	*c[3];
-}			t_color;
-
-typedef struct s_valid_map
-{
-	bool	so;
-	bool	no;
-	bool	we;
-	bool	ea;
-	bool	c;
-	bool	f;
-	bool	player;
-}			t_valid_map;
-
-typedef struct s_player_p
-{
-	int		f_y;
-	int		f_x;
-	int		y;
-	int		x;
-	char	player;
-}		t_player_p;
-
-typedef struct s_temp_map
-{
-	char		**lines;
-	int			size;
-	int			start;
-	t_valid_map *valid;
-	t_player_p	*player;
-}			t_temp_map;
 
 typedef enum e_exit
 {
@@ -196,6 +155,10 @@ typedef struct s_mlx
 	int			texture_nbr;
 }	t_mlx;
 
+// --------------- main.c ------------------------- //
+
+int		main(void);
+
 // --------------- img_create.c ------------------ //
 
 void	my_pixel_put(t_img *img, int x, int y, int color);
@@ -209,9 +172,10 @@ int		arrow_keys(int Key, t_mlx *mlx);
 
 // --------------- draw_shapes.c ---------------- //
 
-void	ft_update_player(int px, int py, t_img *img, t_mlx *win);
+void	ft_update_player(float px, float py, t_img *img, t_mlx *win);
 void	ft_draw_map(t_map *map, t_img *img, t_mlx *win);
 void	draw_square(t_img *img, int x, int y, int color);
+void	ft_draw_mini_map(t_map *map, t_img *img, int x, int y);
 
 // --------------- utils.c --------------------- //
 
@@ -235,7 +199,7 @@ void	draw_3d_walls(t_mlx *win, float distance, int column, float hx);
 // --------------- line_algo.c  --------------------- //
 
 void	ft_bresenhams_alg(t_mlx *win, float end_x, float end_y, int color);
-void	ft_vision_angle(t_mlx *win, float px, float py);
+void	ft_vision_angle_mini(t_mlx *win, float px, float py);
 
 // --------------- clean_rotine.c --------------------- //
 
@@ -248,49 +212,6 @@ int		ft_event_checker(int Key, t_mlx *mlx);
 void	ft_rotate_right(t_mlx *mlx);
 void	ft_rotate_left(t_mlx *mlx);
 void	ft_init_vars(t_ray_vars	*vars, t_mlx *win);
-
-//ft_getters
-int		ft_get_file_size(char *file);
-
-//val_exts
-int		ft_check_file_name(char *file_name);
-
-//ft_error
-int		error_central(int error_code, t_temp_map *map);
-void	print_error(char *str, t_temp_map *map);
-
-//ft_getters
-void	ft_get_map(t_temp_map **map, char *file);
-int	ft_get_start_map(t_temp_map *map);
-
-//freedom city
-void	free_map_parse(t_temp_map **map);
-void	free_split(char **str);
-
-//color validations
-int		col_val(t_temp_map *map, int i);
-int 	ft_invalid_start(t_temp_map *map, char c, int i);
-int		check_extension(char *file_name, char *ext, int len);
-
-//val_colo_utils
-void	check_next_char(t_temp_map *map,int c, int i);
-
-
-//ft_assets
-void	check_textures(t_temp_map *map, int i, int j, char **temp);
-
-char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
-
-//val_maps
-void	check_map(t_temp_map *map, int start, int end, int i);
-
-//flood
-void	flood(t_temp_map *map, int y, int x, int map_size);
-int		ft_check_first_last(char **map, int i);
-int		check_the_sides(char **map, int y, int map_size);
-void	ft_do_flood(t_temp_map *map, int start, int end, int i);
-
-//ft_checkers
-void	first_check(t_temp_map *map, int i, int j);
+char	ft_is_wall(float next_x, float next_y, char **map);
 
 #endif

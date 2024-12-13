@@ -1,44 +1,139 @@
+MAKEFLAGS += -s
 
+CC = cc -g 
 
-
-NAME = square5d
-CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -fr
+
+MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie -lm
+
+NAME = cub3d
+
+NAME_BONUS = cub3d_bonus
+
+SRCS_D = vanilla/img_create.c vanilla/events.c vanilla/draw_shapes.c vanilla/utils.c vanilla/raycast.c \
+		vanilla/wall_and_textures.c vanilla/line_algo.c vanilla/clean_rotine.c vanilla/utils2.c
+
+SRCS_D_bonus = bonus/main.c bonus/img_create.c bonus/events.c bonus/draw_shapes.c bonus/utils.c bonus/raycast.c \
+		bonus/wall_and_textures.c bonus/line_algo.c bonus/clean_rotine.c bonus/utils2.c
+
+SRCS_P = parse/flood_map.c parse/ft_freedoom.c parse/val_colo_utils.c \
+	parse/ft_assets.c parse/ft_getters.c parse/val_extensions.c \
+	parse/ft_checkers.c parse/main.c parse/val_map.c \
+	parse/ft_error.c parse/val_color.c
+
+
+SRCS = $(SRCS_D) $(SRCS_P)
+OBJS = $(SRCS:.c=.o)
+
+SRCS_BONUS = $(SRCS_D_bonus) $(SRCS_P)
+BONUS_OBJS = $(SRCS_BONUS:.c=.o)
+
 LIBFT = ./libraries/libft/libft.a
 PRINTF = ./libraries/printf/ft_printf.a
+LIBX = ./minilibx-linux/libmlx_Linux.a
 
-PARSE = srcs/main.c srcs/ft_error.c srcs/val_extensions.c  srcs/ft_getters.c\
-		srcs/ft_freedoom.c srcs/val_color.c srcs/ft_assets.c srcs/val_colo_utils.c \
-		srcs/val_map.c srcs/flood_map.c srcs/ft_checkers.c
+# --- COLORS ----------------------------------------------------------------- #
 
-SRCS = $(PARSE)
+GREEN		= \033[38;5;47m
+YELLOW		= \033[38;5;226m
+RED		= \033[38;5;196m
+RESET 		= \033[0m
 
-OBJS = ${SRCS:.c=.o}
 
-$(NAME): $(LIBFT) $(PRINTF) $(LIBX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+all: $(LIBFT) $(PRINTF) $(LIBX) $(NAME) 
+
+$(NAME): $(LIBFT) $(PRINTF)  $(LIBX) $(OBJS) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(LIBX) $(MINILXFLAGS) -o $(NAME)
+	@echo "$(GREEN)Executable $(NAME) created"
+	@echo " /###### /##          /##       /##                               /##"
+	@echo "|_  ##_/| ##          | ##      |__/                              | ##"
+	@echo "  | ## /######        | ##       /## /##    /## /######   /#######| ##"
+	@echo "  | ##|_  ##_/        | ##      | ##|  ##  /##//##__  ## /##_____/| ##"
+	@echo "  | ##  | ##          | ##      | ## \  ##/##/| ########|  ###### |__"
+	@echo "  | ##  | ## /##      | ##      | ##  \  ###/ | ##_____/ \____ ##"
+	@echo "/######|  ####/       | ########| ##   \  #/  |  ####### /######/ /##"
+	@echo "|______/ \___/        |________/|__/    \_/    \_______/|_______/ |__"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡶⢿⣿⣿⢿⣿⡿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣉⠁⢈⣉⠁⠈⠛⠃⠘⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣦⣾⣿⡇⣼⣿⣧⣰⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿ o ⣿⣿⣿ o ⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀  "
+	@echo "⠀⠀⠀⠀⠀⢠⡄⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⣤⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⢸⡷⠶⠦⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠴⠶⣿⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⠟⢀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⣠⡀⠺⣿⣷⣦⣉⠛⠛⠛⠋⣡⣴⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⢀⣾⣿⠟⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣾⣿⣿⣿⣿⣷⠄⠀⢼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⣿⣯⣶⣶⡀⠉⢡⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⠛⢻⣿⣿⣥⣤⡈⠻⠛⣻⣿⣿⡟⠛⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⠀⢸⣿⣿⣿⣿⣏⣠⡀⢿⣿⣿⡇⠀⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠉⠉⠉⠉⠀⠈⠉⠉⠉⠉⠉⠉⠉⠀⠉⠉⠁⠀⠉⠉⠉⠉⠀⠀⠀⠀$(RESET)"
+
+bonus: $(LIBFT) $(PRINTF) $(LIBX) $(NAME_BONUS)
+
+$(NAME_BONUS): $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) $(PRINTF) $(LIBX) $(MINILXFLAGS) -o $(NAME_BONUS)
+	@echo "$(GREEN)Executable $(NAME_BONUS) (bonus) created"
+	@echo " /#######                                          "
+	@echo "| ##__  ##                                         "
+	@echo "| ##  \ ##  /######  /#######  /##   /##  /####### "
+	@echo "| ######## /##__  ##| ##__  ##| ##  | ## /##_____/ "
+	@echo "| ##__  ##| ##  \ ##| ##  \ ##| ##  | ##|  ######  "
+	@echo "| ##  \ ##| ##  | ##| ##  | ##| ##  | ## \____  ## "
+	@echo "| #######/|  ######/| ##  | ##|  ######/ /#######/ "
+	@echo "|_______/  \______/ |__/  |__/ \______/ |_______/  $(RESET)"
+
+
 
 clean:
-	${MAKE} --no-print-directory clean -C ./libraries/libft
-	${MAKE} --no-print-directory clean -C ./libraries/printf
-	rm -fr ${OBJS}
+	rm -rf $(OBJS)
+	rm -rf $(BONUS_OBJS)
+	@echo "$(YELLOW)Removing $(NAME) and libraries objects files$(RESET)" 
+	cd libraries && cd libft && make clean
+	cd libraries && cd printf && make clean
+	cd minilibx-linux && make clean
 
 fclean: clean
-		${MAKE} fclean --no-print-directory -C ./libraries/libft
-		${MAKE} fclean --no-print-directory -C ./libraries/printf
-		rm -fr libft.a
-		rm -fr ${NAME}
+	rm -rf $(NAME)
+	rm -rf $(NAME_BONUS) 
+	@echo "$(RED)Removing $(NAME) executable"
+	@echo " /###### /##          /#######  /##                 /##"
+	@echo "|_  ##_/| ##         | ##__  ##|__/                | ##"
+	@echo "  | ## /######       | ##  \ ## /##  /######   /#######"
+	@echo "  | ##|_  ##_/       | ##  | ##| ## /##__  ## /##__  ##"
+	@echo "  | ##  | ##         | ##  | ##| ##| ########| ##  | ##"
+	@echo "  | ##  | ## /##     | ##  | ##| ##| ##_____/| ##  | ##"
+	@echo " /######  ####/      | #######/| ##|  #######|  #######"
+	@echo "|______/ \___/       |_______/ |__/ \_______/ \_______/"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡶⢿⣿⣿⢿⣿⡿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣉⠁⢈⣉⠁⠈⠛⠃⠘⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣦⣾⣿⡇⣼⣿⣧⣰⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿ x ⣿⣿⣿ x ⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⢠⡄⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⣤⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⢸⡷⠶⠦⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠴⠶⣿⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⠟⢀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠀⠀⣠⡀⠺⣿⣷⣦⣉⠛⠛⠛⠋⣡⣴⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⢀⣾⣿⠟⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣾⣿⣿⣿⣿⣷⠄⠀⢼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⣿⣯⣶⣶⡀⠉⢡⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⠛⢻⣿⣿⣥⣤⡈⠻⠛⣻⣿⣿⡟⠛⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⣿⣿⣿⣿⠀⢸⣿⣿⣿⣿⣏⣠⡀⢿⣿⣿⡇⠀⣿⣿⣿⣿⠀⠀⠀⠀"
+	@echo "⠀⠀⠀⠀⠉⠉⠉⠉⠀⠈⠉⠉⠉⠉⠉⠉⠉⠀⠉⠉⠁⠀⠉⠉⠉⠉⠀⠀⠀⠀$(RESET)"
+	cd libraries && cd libft && make fclean
+	cd libraries && cd printf && make fclean
 
-all: ${NAME}
 
-re: fclean all
+re: fclean all 
 
+.phony: all bonus clean fclean re 
+
+################################# Making librarys #########################
 $(LIBFT):
-	cd libraries && cd libft && make
-
+	cd libraries && cd libft && make 
+	
 $(PRINTF):
-	cd libraries && cd printf && make
-
-
-.PHONY: all clear fclean re
+	cd libraries && cd printf && make 
+	
+$(LIBX):
+	cd minilibx-linux && make

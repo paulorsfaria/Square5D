@@ -12,7 +12,7 @@
 
 #include "../headers/cub3d.h"
 
-void	free_map(t_temp_map **map)
+void	free_map_parse(t_temp_map **map)
 {
 	int	i;
 
