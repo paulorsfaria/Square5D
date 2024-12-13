@@ -12,23 +12,17 @@
 
 #include "../headers/cub3d.h"
 
-void	ft_flood_map(t_temp_map *map, int start, int end, t_player *player)
+void ft_flood_map(t_temp_map *map, int f_y, int f_x)
 {
 
+    ft_flood_map(map, f_y + 1, f_x);
+    ft_flood_map(map, f_y - 1, f_x);
+    ft_flood_map(map, f_y, f_x + 1);
+    ft_flood_map(map, f_y, f_x - 1);
 
 
 
-
-/*
- * this will have to be a recursive function so may hve to do some
- *
- */
-//	(void)start;
-//	(void)end;
-
-//	map->lines[player->y + start][player->x] = 'F';
-//	printf("the %c is at %d | %d\n",player->player, player->y,player->x);
-//	printf("the %c\n", map->lines[player->y + start][player->x]);
+    //all is fucked
 }
 
 int	player_check(char c, int flag)
@@ -81,8 +75,9 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 	int	player_cnt;
 
 	player_cnt = 0;
+    (void)end;
 	while (map->lines[++i])
-	{
+    {
 		j = 0;
 		while (map->lines[i][j] == ' ')
 			j++;
@@ -99,5 +94,5 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 	}
 	if (player_cnt != 1)
 		error_central(-12, map);
-	ft_flood_map(map, start, end, map->player);
+    ft_flood_map(map, map->player->f_y, map->player->f_x);
 }

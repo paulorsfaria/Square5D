@@ -98,6 +98,10 @@ int	main(int argc, char *argv[])
 		col_val(map, -1);
 		check_textures(map, 0, 0, NULL);
 		check_map(map, 0, 0, -1);
+
+        int j = -1;
+        while(map->lines[++j])
+            printf("%s\n", map->lines[j]);
 		free_map(&map);
 	}
 	else if (argc > 1)
