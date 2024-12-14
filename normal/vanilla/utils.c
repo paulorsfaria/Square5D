@@ -6,11 +6,11 @@
 /*   By: diogosan <diogosan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 14:47:44 by diogosan          #+#    #+#             */
-/*   Updated: 2024/12/03 09:26:19 by diogosan         ###   ########.fr       */
+/*   Updated: 2024/12/14 01:03:47 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 int	ft_mod(int n)
 {
@@ -39,7 +39,23 @@ int	ft_circle_normalizer(float *ra)
 	return (SUCCESS);
 }
 
-void	set_up_win(t_mlx *win, char **map)
+char **get_final_map(t_temp_map *map)
+{
+    int i;
+    int j;
+    char **new_map;
+
+    i = 0;
+    j = 0;
+    first_check(map, 0, 0);
+    while (map->lines && map->lines[i][j] != '0' && map->lines[i][j] != '1' && map->lines[i][j] != ' ')
+        i++;
+    new_map = ft_calloc(sizeof(char *), (map->size - i) + 1);
+    new_map[j] = NULL;
+    return new_map;
+}
+
+void	set_up_win(t_mlx *win, t_temp_map *map)
 {
 	int	y;
 
@@ -50,17 +66,19 @@ void	set_up_win(t_mlx *win, char **map)
 	win->mlx_win = 0;
 	win->map = 0;
 	win->texture_nbr = 0;
-	win->map = malloc(sizeof(t_map));
+	win->map = ft_calloc(sizeof(t_map), 1);
+    win->map->coord = get_final_map(map);
+
 	win->player = malloc(sizeof(t_player));
-	win->map->height = 10;
-	win->map->width = ft_strlen(map[0]);
+	win->map->height = map->size;
+	win->map->width = ft_strlen(win->map->coord[2]);
 	win->player->player_angle = 0;
 	win->player->player_delta_x = cos(win->player->player_angle) * 7;
 	win->player->player_delta_y = sin(win->player->player_angle) * 7;
 	win->map->coord = ft_calloc(win->map->height, sizeof(char *));
 	while (y < win->map->height)
 	{
-		win->map->coord[y] = ft_strdup(map[y]);
+		win->map->coord[y] = ft_strdup(map->lines[y]);
 		y++;
 	}
 }

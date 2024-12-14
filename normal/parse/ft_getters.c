@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 int	ft_get_file_size(char *file)
 {
@@ -58,6 +58,7 @@ void	ft_get_map(t_temp_map **map, char *file)
 		(*map)->lines[i] = get_next_line(fd);
 	}
 	(*map)->lines[i + 1] = NULL;
+    (*map)->size = i;
 	close(fd);
 }
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 void	draw_square(t_img *img, int x, int y, int color)
 {
@@ -34,7 +34,6 @@ void	draw_square(t_img *img, int x, int y, int color)
 		i++;
 	}
 }
-
 
 //TODO remover a coordenada do player quando o Paulo tiver a colocar na estrutura
 

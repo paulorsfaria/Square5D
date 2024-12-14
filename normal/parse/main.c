@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 int	draw(t_mlx *win)
 {
@@ -136,17 +136,23 @@ void	ft_validations(char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_mlx	*win;
-	argc--;
+    t_temp_map	*map;
 
+    argc--;
 	if (argc == 1)
 	{
 		ft_validations(argv);
-		char **maps = NULL;
-		//function to get proper map values
+        map = ft_calloc(sizeof(t_temp_map), 1);
+        map->player = ft_calloc(sizeof(t_player), 1);
+        map->size = ft_get_file_size(argv[1]);
+        ft_get_map(&map, argv[1]);
+     //   int i = -1;
+//        while(map->lines[++i])
+//            printf("%s\n", map->lines[i]);
+		// function to get proper map values
 		win = malloc(sizeof(t_mlx));
-		set_up_win(win, maps);
+		set_up_win(win, map);
 		render(win);
-	
 	}
 	else if (argc > 1)
 		ft_printf_err("Only one input is accepted");

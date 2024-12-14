@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 static void	ft_go_up(t_mlx *mlx);
 static void	ft_go_down(t_mlx *mlx);

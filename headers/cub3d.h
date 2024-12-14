@@ -47,12 +47,6 @@
 
 # define DR 0.000545415 //(FOV / WIDTH)
 
-typedef struct s_color
-{
-	int	*f[3];
-	int	*c[3];
-}			t_color;
-
 typedef struct s_valid_map
 {
 	bool	so;
@@ -216,7 +210,7 @@ void	draw_square(t_img *img, int x, int y, int color);
 // --------------- utils.c --------------------- //
 
 int		ft_mod(int n);
-void	set_up_win(t_mlx *win, char **map);
+void	set_up_win(t_mlx *win, t_temp_map *map);
 float	line_length(float x1, float y1, float x2, float y2);
 int		ft_circle_normalizer(float *ra);
 void	ft_value_setter(float *val1, float *set1, float *val2, float *set2);

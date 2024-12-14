@@ -10,16 +10,17 @@ NAME = cub3d
 
 NAME_BONUS = cub3d_bonus
 
-SRCS_D = vanilla/img_create.c vanilla/events.c vanilla/draw_shapes.c vanilla/utils.c vanilla/raycast.c \
-		vanilla/wall_and_textures.c vanilla/line_algo.c vanilla/clean_rotine.c vanilla/utils2.c
+SRCS_D = normal/vanilla/img_create.c normal/vanilla/events.c normal/vanilla/draw_shapes.c normal/vanilla/utils.c \
+		normal/vanilla/raycast.c normal/vanilla/wall_and_textures.c normal/vanilla/line_algo.c \
+		normal/vanilla/clean_rotine.c normal/vanilla/utils2.c
 
 SRCS_D_bonus = bonus/main.c bonus/img_create.c bonus/events.c bonus/draw_shapes.c bonus/utils.c bonus/raycast.c \
 		bonus/wall_and_textures.c bonus/line_algo.c bonus/clean_rotine.c bonus/utils2.c
 
-SRCS_P = parse/flood_map.c parse/ft_freedoom.c parse/val_colo_utils.c \
-	parse/ft_assets.c parse/ft_getters.c parse/val_extensions.c \
-	parse/ft_checkers.c parse/main.c parse/val_map.c \
-	parse/ft_error.c parse/val_color.c
+SRCS_P = normal/parse/flood_map.c normal/parse/ft_freedoom.c normal/parse/val_colo_utils.c \
+	normal/parse/ft_assets.c normal/parse/ft_getters.c normal/parse/val_extensions.c \
+	normal/parse/ft_checkers.c normal/parse/main.c normal/parse/val_map.c \
+	normal/parse/ft_error.c normal/parse/val_color.c
 
 
 SRCS = $(SRCS_D) $(SRCS_P)
