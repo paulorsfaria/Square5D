@@ -53,7 +53,7 @@ char **get_final_map(t_temp_map *map)
     new_map = ft_calloc(sizeof(char *), (map->size - i) + 1);
 	while (map->lines[i] != NULL)
 	{
-		new_map[j] = map->lines[i];
+		new_map[j] = ft_strdup(map->lines[i]);
 		i++;
 		j++;
 	}
@@ -105,6 +105,7 @@ int	get_max_len(char **map)
 	}
 	return (max_len + 1);
 }
+
 void	set_up_win(t_mlx *win, t_temp_map *map)
 {
 	win->color_top = 0xffffff;

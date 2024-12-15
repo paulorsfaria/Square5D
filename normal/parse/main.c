@@ -161,9 +161,9 @@ int	main(int argc, char *argv[])
 		win = ft_calloc(sizeof(t_mlx), 1);
 		/*need to solve the leaks*/
 		set_up_win(win, map);
-		free_map_parse(&map);
-		render(win);
-	}
+        free_map_parse(&map);
+        render(win);
+    }
 	else if (argc > 1)
 		ft_printf_err("Only one input is accepted");
 	else

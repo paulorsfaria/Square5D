@@ -22,30 +22,32 @@ void	ft_cleanup_and_exit(t_mlx *mlx)
 		if (mlx->north_texture.mlx_img)
 		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->north_texture.mlx_img);
-			free(mlx->north_texture.path);
+
 		}
 		if (mlx->south_texture.mlx_img)
 		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->south_texture.mlx_img);
-			free(mlx->south_texture.path);
 		}
 		if (mlx->east_texture.mlx_img)
 		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->east_texture.mlx_img);
-			free(mlx->east_texture.path);
 		}
 		if (mlx->west_texture.mlx_img)
 		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->west_texture.mlx_img);
-			free(mlx->west_texture.path);
 		}
+        free(mlx->west_texture.path);
+
+        free(mlx->east_texture.path);
+
+        free(mlx->south_texture.path);
+
+        free(mlx->north_texture.path);
 		if (mlx->mlx_win != NULL)
 			mlx_destroy_window(mlx->mlx_connect, mlx->mlx_win);
-		if (mlx->mlx_connect != NULL)
-			mlx_destroy_display(mlx->mlx_connect);
+        mlx_destroy_display(mlx->mlx_connect);
 		free(mlx->mlx_connect);
 	}
-
 	if (mlx->map != NULL)
 	{
 		free_split(mlx->map->coord);
