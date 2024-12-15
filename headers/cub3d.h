@@ -166,6 +166,7 @@ typedef struct s_player
 typedef struct s_tex
 {
 	void	*mlx_img;
+	char	*path;
 	char	*addr;
 	int		width;
 	int		height;

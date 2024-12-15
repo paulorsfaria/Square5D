@@ -24,9 +24,12 @@ void	free_map_parse(t_temp_map **map)
 			free((*map)->lines[i]);
 			i++;
 		}
-		free((*map)->lines);
-		free((*map)->valid);
-		free((*map)->player);
+		if ((*map)->lines)
+			free((*map)->lines);
+		if ((*map)->valid)
+			free((*map)->valid);
+		if ((*map)->player)
+			free((*map)->player);
 		free(*map);
 	}
 }

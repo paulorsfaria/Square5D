@@ -36,32 +36,40 @@ void	render(t_mlx *win) //render(char **map)
 			&win->img.line_len, &win->img.endian);
 	// North texture
 	win->north_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-			"./assets/north_texture.xpm", &win->north_texture.width,
+			win->north_texture.path, &win->north_texture.width,
 			&win->north_texture.height);
+	if (win->north_texture.mlx_img == NULL)
+		ft_cleanup_and_exit(win);
 	win->north_texture.addr = mlx_get_data_addr(win->north_texture.mlx_img,
 			&win->north_texture.bpp, &win->north_texture.line_len,
 			&win->north_texture.endian);
 
 	// South texture
 	win->south_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-			"./assets/south_texture.xpm", &win->south_texture.width,
+			win->south_texture.path, &win->south_texture.width,
 			&win->south_texture.height);
+	if (win->south_texture.mlx_img== NULL)
+		ft_cleanup_and_exit(win);
 	win->south_texture.addr = mlx_get_data_addr(win->south_texture.mlx_img,
 			&win->south_texture.bpp, &win->south_texture.line_len,
 			&win->south_texture.endian);
 
 	// East texture
 	win->east_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-			"./assets/east_texture.xpm", &win->east_texture.width,
+			win->east_texture.path, &win->east_texture.width,
 			&win->east_texture.height);
+	if (win->east_texture.mlx_img == NULL)
+		ft_cleanup_and_exit(win);
 	win->east_texture.addr = mlx_get_data_addr(win->east_texture.mlx_img,
 			&win->east_texture.bpp, &win->east_texture.line_len,
 			&win->east_texture.endian);
 
 	// West texture
 	win->west_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-			"./assets/west_texture.xpm", &win->west_texture.width,
+			win->west_texture.path, &win->west_texture.width,
 			&win->west_texture.height);
+	if (win->west_texture.mlx_img == NULL)
+		ft_cleanup_and_exit(win);
 	win->west_texture.addr = mlx_get_data_addr(win->west_texture.mlx_img,
 			&win->west_texture.bpp, &win->west_texture.line_len,
 			&win->west_texture.endian);
@@ -135,7 +143,7 @@ void	ft_validations(char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	t_mlx	*win;
+	t_mlx		*win;
     t_temp_map	*map;
 
     argc--;
@@ -150,8 +158,9 @@ int	main(int argc, char *argv[])
 //        while(map->lines[++i])
 //            printf("%s\n", map->lines[i]);
 		// function to get proper map values
-		win = malloc(sizeof(t_mlx));
+		win = ft_calloc(sizeof(t_mlx), 1);
 		set_up_win(win, map);
+		free_map_parse(&map);
 		render(win);
 	}
 	else if (argc > 1)
