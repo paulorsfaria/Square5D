@@ -159,6 +159,7 @@ int	main(int argc, char *argv[])
 //            printf("%s\n", map->lines[i]);
 		// function to get proper map values
 		win = ft_calloc(sizeof(t_mlx), 1);
+		/*need to solve the leaks*/
 		set_up_win(win, map);
 		free_map_parse(&map);
 		render(win);
