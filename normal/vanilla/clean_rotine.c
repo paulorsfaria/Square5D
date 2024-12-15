@@ -20,22 +20,13 @@ void	ft_cleanup_and_exit(t_mlx *mlx)
 	{
 		mlx_destroy_image(mlx->mlx_connect, mlx->img.mlx_img);
 		if (mlx->north_texture.mlx_img)
-		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->north_texture.mlx_img);
-
-		}
 		if (mlx->south_texture.mlx_img)
-		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->south_texture.mlx_img);
-		}
 		if (mlx->east_texture.mlx_img)
-		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->east_texture.mlx_img);
-		}
 		if (mlx->west_texture.mlx_img)
-		{
 			mlx_destroy_image(mlx->mlx_connect, mlx->west_texture.mlx_img);
-		}
         free(mlx->west_texture.path);
 
         free(mlx->east_texture.path);
