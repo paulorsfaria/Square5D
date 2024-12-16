@@ -279,4 +279,8 @@ void	ft_do_flood(t_temp_map *map, int start, int end, int i);
 //ft_checkers
 void	first_check(t_temp_map *map, int i, int j);
 
+//ft_validations
+void	ft_validations(char *argv[]);
+int	is_whitespace(char c);
+
 #endif

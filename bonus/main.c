@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../headers/cub3d_bonus.h"
 
 int	draw(t_mlx *win)
 {
 	render_background(&win->img, 0xD3D3D3);
 	ft_draw_map(win->map, &win->img, win);
 	render_background_top_bot(win, &win->img);
+	raycaster(win);
 	raycaster(win);
 	ft_draw_mini_map(win->map, &win->img, -1, -1);
 	ft_update_player((win->player->x / SQUARE) * SQUARE_MINI,

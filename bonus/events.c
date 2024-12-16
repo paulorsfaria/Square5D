@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../headers/cub3d_bonus.h"
 #include <stdbool.h>
 
 static void	ft_go_up(t_mlx *mlx);

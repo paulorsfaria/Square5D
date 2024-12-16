@@ -34,7 +34,6 @@ void	draw_square(t_img *img, int x, int y, int color)
 		i++;
 	}
 }
-
 //TODO remover a coordenada do player quando o Paulo tiver a colocar na estrutura
 
 void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
@@ -51,9 +50,10 @@ void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
 		{
 			if (map->coord[y][x] == '1')
 				draw_square(img, x, y, 0x000000);
-			else if (map->coord[y][x] == '0')
+			else if (map->coord[y][x] == '0' || map->coord[y][x] == ' ')
 				draw_square(img, x, y, 0xFFFFFF);
-			else if (map->coord[y][x] == 'N') // to remove
+			else if (map->coord[y][x] == 'N' || map->coord[y][x] == 'W'
+				|| map->coord[y][x] == 'S' || map->coord[y][x] == 'E' )
 			{
 				draw_square(img, x, y, 0xFFFFFF);
 				if (v == 0)

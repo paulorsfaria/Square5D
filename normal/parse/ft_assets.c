@@ -18,13 +18,6 @@ void	val_text(char **temp, t_temp_map *map)
 	(void)map;
 }
 
-//	win->north_texture.mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
-//				"./assets/north_texture.xpm", &win->north_texture.width,
-//				&win->north_texture.height);
-//		win->north_texture.addr = mlx_get_data_addr(win->north_texture.mlx_img,
-//				&win->north_texture.bpp, &win->north_texture.line_len,
-//				&win->north_texture.endian);
-
 void	line_checker(char **line, t_temp_map *map)
 {
 	if (!line[0] || !line[1])
@@ -47,25 +40,10 @@ void	line_checker(char **line, t_temp_map *map)
 	}
 }
 
-int	while_checker(t_temp_map *map, const int i, const int flag, int color)
+int	while_checker(t_temp_map *map, const int i, const int flag)
 {
-//	int	j;
-
-//	j = -1;
 	if (flag == 1)
 	{
-		(void)color;
-//		while (map->lines[i][++j] != '\0')
-//		{
-//			if (map->lines[i][j] == 'C' || map->lines[i][j] == 'F')
-//				color = 1;
-//			if (color == 0 && (map->lines[i][j] == '1'
-//				|| map->lines[i][j] == '0'))
-//				{
-//					printf("%d | %d | %c | %s \n", i,j, map->lines[i][j], map->lines[i]);
-//					print_error("textures", map);
-//				}
-//		}
 		if (map->lines[i] != NULL && map->lines[i][0] != 'S'
 			&& map->lines[i][0] != 'N' && map->lines[i][0] != 'W'
 			&& map->lines[i][0] != 'E')
@@ -83,15 +61,15 @@ void	check_textures(t_temp_map *map, int i, int j, char **temp)
 {
 	static int	flag = 0;
 
-	while (while_checker(map, i, 1, 0) == 1)
+	while (while_checker(map, i, 1) == 1)
 		i++;
-	while (while_checker(map, i, 0, 0) == 1)
+	while (while_checker(map, i, 0) == 1)
 	{
 		flag++;
 		j = i;
 		while (flag != 4 && (map->lines[j + 1][0] == '\0'))
 			j++;
-		if (while_checker(map, j + 1, 1, 0) == 1)
+		if (while_checker(map, j + 1, 1) == 1)
 			if (flag < 3)
 				error_central(-9, map);
 		if (flag == 4 && map->lines[j + 1][0] != '\0')

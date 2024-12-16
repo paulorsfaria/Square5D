@@ -58,7 +58,7 @@ void	ft_get_map(t_temp_map **map, char *file)
 		(*map)->lines[i] = get_next_line(fd);
 	}
 	(*map)->lines[i + 1] = NULL;
-    (*map)->size = i;
+	(*map)->size = i;
 	close(fd);
 }
 

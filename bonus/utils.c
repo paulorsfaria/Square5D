@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../headers/cub3d_bonus.h"
 
 int	ft_mod(int n)
 {

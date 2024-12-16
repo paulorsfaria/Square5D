@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../headers/cub3d_bonus.h"
 /**
  * raycaster - Casts rays to determine intersections with the map.
  *

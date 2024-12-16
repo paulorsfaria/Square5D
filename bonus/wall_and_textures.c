@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../headers/cub3d_bonus.h"
 
 void	ft_texture_picker(t_mlx *win, float ray_point, char c)
 {

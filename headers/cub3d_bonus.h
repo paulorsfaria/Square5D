@@ -13,13 +13,21 @@
 #ifndef CUB3D_BONUS_H
 # define CUB3D_BONUS_H
 
-# include "libraries/libft/libft.h"
-# include "libraries/printf/ft_printf.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
 # include <stdio.h>
-# include "minilibx-linux/mlx.h"
+# include <limits.h>
+# include <ctype.h>
+# include <string.h>
+# include <fcntl.h>
+# include <stdbool.h>
+# include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
+# include "../libraries/libft/libft.h"
+# include "../libraries/printf/ft_printf.h"
 
 # define PI 3.14159265359
 # define P2 1.57079632679 // PI/2
@@ -41,6 +49,34 @@
 
 # define DR 0.000545415 //(FOV / WIDTH)
 
+typedef struct s_valid_map
+{
+	bool	so;
+	bool	no;
+	bool	we;
+	bool	ea;
+	bool	c;
+	bool	f;
+	bool	player;
+}			t_valid_map;
+
+typedef struct s_player_p
+{
+	int		f_y;
+	int		f_x;
+	int		y;
+	int		x;
+	char	player;
+}		t_player_p;
+
+typedef struct s_temp_map
+{
+	char		**lines;
+	int			size;
+	int			start;
+	t_valid_map *valid;
+	t_player_p	*player;
+}			t_temp_map;
 typedef enum e_exit
 {
 	FAILURE,
