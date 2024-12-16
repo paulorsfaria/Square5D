@@ -83,7 +83,6 @@ typedef enum e_exit
 }	t_exit;
 
 //--------- calculations -------
-
 typedef struct s_horizontal_intersection
 {
 	int		mx;
@@ -126,7 +125,6 @@ typedef struct s_ray_vars
 //--------- ------------ -------
 
 //--------- texture calculations -------
-
 typedef struct s_texture_vars
 {
 	int		y;
@@ -197,11 +195,9 @@ void	my_pixel_put(t_img *img, int x, int y, int color);
 void	render_background(t_img *img, int color);
 void	render_background_top_bot(t_mlx *win, t_img *img);
 int		get_pixel_color(t_tex *img, int x, int y);
-
 // --------------- events.c --------------------- //
 
 int		arrow_keys(int Key, t_mlx *mlx);
-
 // --------------- draw_shapes.c ---------------- //
 
 void	ft_update_player(int px, int py, t_img *img, t_mlx *win);
@@ -215,29 +211,24 @@ void	set_up_win(t_mlx *win, t_temp_map *map);
 float	line_length(float x1, float y1, float x2, float y2);
 int		ft_circle_normalizer(float *ra);
 void	ft_value_setter(float *val1, float *set1, float *val2, float *set2);
-
 // --------------- raycast.c --------------------- //
 
 void	raycaster(t_mlx *win);
 void	get_horizontal_intersection(t_mlx *win, float ra, float *hx, float *hy);
 void	get_vertical_intersection(t_mlx *win, float ra, float *vx, float *vy);
-
 // --------------- wall_and_textures.c --------------------- //
 
 void	ft_texture_picker(t_mlx *win, float ray_point, char c);
 void	draw_3d_walls(t_mlx *win, float distance, int column, float hx);
-
 // --------------- line_algo.c  --------------------- //
 
 void	ft_bresenhams_alg(t_mlx *win, float end_x, float end_y, int color);
 void	ft_vision_angle(t_mlx *win, float px, float py);
-
 // --------------- clean_rotine.c --------------------- //
 
 void	ft_cleanup_and_exit(t_mlx *mlx);
 int		ft_close(t_mlx *mlx);
 int		ft_event_checker(int Key, t_mlx *mlx);
-
 // --------------- utils2.c --------------------- //
 
 void	ft_rotate_right(t_mlx *mlx);

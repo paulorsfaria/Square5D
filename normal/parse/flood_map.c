@@ -25,7 +25,7 @@ int	check_the_sides(char **map, int y, int map_size)
 			return (-1);
 		while (map[y][x] != '\0' && map[y][x] != '\n')
 		{
-			if (map[y][x] == 'F' && !map[y + 1][x])
+			if (map[y][x] == 'F' && (!map[y + 1][x] || !map[y - 1][x]))
 				return (-1);
 			x++;
 		}

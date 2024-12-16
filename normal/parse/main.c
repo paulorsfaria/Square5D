@@ -144,25 +144,23 @@ void	ft_validations(char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_mlx		*win;
-    t_temp_map	*map;
+	t_temp_map	*map;
 
-    argc--;
+	argc--;
 	if (argc == 1)
 	{
 		ft_validations(argv);
-        map = ft_calloc(sizeof(t_temp_map), 1);
-        map->player = ft_calloc(sizeof(t_player), 1);
-        map->size = ft_get_file_size(argv[1]);
-        ft_get_map(&map, argv[1]);
-     //   int i = -1;
-//        while(map->lines[++i])
-//            printf("%s\n", map->lines[i]);
+		map = ft_calloc(sizeof(t_temp_map), 1);
+		map->player = ft_calloc(sizeof(t_player), 1);
+		map->size = ft_get_file_size(argv[1]);
+		ft_get_map(&map, argv[1]);
+
 		// function to get proper map values
 		win = ft_calloc(sizeof(t_mlx), 1);
 		/*need to solve the leaks*/
 		set_up_win(win, map);
-        free_map_parse(&map);
-        render(win);
+		free_map_parse(&map);
+		render(win);
     }
 	else if (argc > 1)
 		ft_printf_err("Only one input is accepted");

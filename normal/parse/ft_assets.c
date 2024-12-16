@@ -54,14 +54,18 @@ int	while_checker(t_temp_map *map, const int i, const int flag, int color)
 	j = -1;
 	if (flag == 1)
 	{
-		while (map->lines[i][++j] != '\0')
-		{
-			if (map->lines[i][j] == 'C' || map->lines[i][j] == 'F')
-				color = 1;
-			if (color == 0 && (map->lines[i][j] == '1'
-				|| map->lines[i][j] == '0'))
-				print_error("textures", map);
-		}
+		(void)color;
+//		while (map->lines[i][++j] != '\0')
+//		{
+//			if (map->lines[i][j] == 'C' || map->lines[i][j] == 'F')
+//				color = 1;
+//			if (color == 0 && (map->lines[i][j] == '1'
+//				|| map->lines[i][j] == '0'))
+//				{
+//					printf("%d | %d | %c | %s \n", i,j, map->lines[i][j], map->lines[i]);
+//					print_error("textures", map);
+//				}
+//		}
 		if (map->lines[i] != NULL && map->lines[i][0] != 'S'
 			&& map->lines[i][0] != 'N' && map->lines[i][0] != 'W'
 			&& map->lines[i][0] != 'E')

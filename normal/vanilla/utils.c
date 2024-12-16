@@ -105,11 +105,36 @@ int	get_max_len(char **map)
 	}
 	return (max_len + 1);
 }
+int	ft_get_colors(t_temp_map *map, int c)
+{
+	int		i;
+	int		j;
+	int		hex_color = 0;
+	char	**temp;
+	char	*color;
+
+	i = 0;
+	j = 0;
+	temp = NULL;
+	while (map->lines[i] && map->lines[i][0] != c)
+		i++;
+	if (map->lines[i][0] == c)
+	{
+		temp = ft_split(map->lines[i], ' ');
+		color = ft_strdup(temp[1]);
+		free_split(temp);
+		temp =  ft_split(color, ',');
+		printf("%s | %s | %s\n", temp[0], temp[1], temp[2]);
+
+	}
+	return (hex_color);
+}
+
 
 void	set_up_win(t_mlx *win, t_temp_map *map)
 {
-	win->color_top = 0xffffff;
-	win->color_bot = 0xff00ff;
+	win->color_top = ft_get_colors(map, 'F');;
+	win->color_bot = ft_get_colors(map, 'C');;
 	win->mlx_connect = 0;
 	win->mlx_win = 0;
 	win->map = 0;

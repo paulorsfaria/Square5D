@@ -21,8 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5a503b18-b43e-4391-951d-960a73990013" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.cub" beforeDir="false" afterPath="$PROJECT_DIR$/a.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/maps/invalid/invalid_walls.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/maps/invalid/invalid_walls.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/flood_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/flood_map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_assets.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_assets.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/normal/parse/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/vanilla/clean_rotine.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/clean_rotine.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/normal/vanilla/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,6 +66,11 @@
         </entry>
       </map>
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -88,7 +97,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/paulo-do/Square5D",
+    "last_opened_file_path": "/home/paulo-do/Videos/Square5D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -103,11 +112,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Square5D" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -138,6 +142,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bonus" />
@@ -160,6 +169,7 @@
       <workItem from="1734190606169" duration="12528000" />
       <workItem from="1734220695049" duration="1435000" />
       <workItem from="1734228433249" duration="2658000" />
+      <workItem from="1734284633632" duration="8114000" />
     </task>
     <servers />
   </component>
