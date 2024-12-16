@@ -77,6 +77,7 @@ typedef struct s_temp_map
 	t_valid_map *valid;
 	t_player_p	*player;
 }			t_temp_map;
+
 typedef enum e_exit
 {
 	FAILURE,
@@ -167,6 +168,7 @@ typedef struct s_player
 typedef struct s_tex
 {
 	void	*mlx_img;
+	char	*path;
 	char	*addr;
 	int		width;
 	int		height;
@@ -191,9 +193,9 @@ typedef struct s_mlx
 	int			texture_nbr;
 }	t_mlx;
 
-// --------------- main.c ------------------------- //
 
-int		main(void);
+
+void	ft_vision_angle(t_mlx *win, float px, float py);
 
 // --------------- img_create.c ------------------ //
 
@@ -216,7 +218,7 @@ void	ft_draw_mini_map(t_map *map, t_img *img, int x, int y);
 // --------------- utils.c --------------------- //
 
 int		ft_mod(int n);
-void	set_up_win(t_mlx *win, char **map);
+void	set_up_win(t_mlx *win, t_temp_map *map);
 float	line_length(float x1, float y1, float x2, float y2);
 int		ft_circle_normalizer(float *ra);
 void	ft_value_setter(float *val1, float *set1, float *val2, float *set2);
@@ -250,4 +252,52 @@ void	ft_rotate_left(t_mlx *mlx);
 void	ft_init_vars(t_ray_vars	*vars, t_mlx *win);
 char	ft_is_wall(float next_x, float next_y, char **map);
 
+
+//ft_getters
+int		ft_get_file_size(char *file);
+
+//val_exts
+int		ft_check_file_name(char *file_name);
+
+//ft_error
+int		error_central(int error_code, t_temp_map *map);
+void	print_error(char *str, t_temp_map *map);
+
+//ft_getters
+void	ft_get_map(t_temp_map **map, char *file);
+int	ft_get_start_map(t_temp_map *map);
+
+//freedom city
+void	free_map_parse(t_temp_map **map);
+void	free_split(char **str);
+
+//color validations
+int		col_val(t_temp_map *map, int i);
+int 	ft_invalid_start(t_temp_map *map, char c, int i);
+int		check_extension(char *file_name, char *ext, int len);
+
+//val_colo_utils
+void	check_next_char(t_temp_map *map,int c, int i);
+
+
+//ft_assets
+void	check_textures(t_temp_map *map, int i, int j, char **temp);
+
+char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
+
+//val_maps
+void	check_map(t_temp_map *map, int start, int end, int i);
+
+//flood
+void	flood(t_temp_map *map, int y, int x, int map_size);
+int		ft_check_first_last(char **map, int i);
+int		check_the_sides(char **map, int y, int map_size);
+void	ft_do_flood(t_temp_map *map, int start, int end, int i);
+
+//ft_checkers
+void	first_check(t_temp_map *map, int i, int j);
+
+//ft_validations
+void	ft_validations(char *argv[]);
+int	is_whitespace(char c);
 #endif

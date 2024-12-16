@@ -12,18 +12,17 @@
 
 #include "../headers/cub3d_bonus.h"
 
-static void	free_map(t_map *map)
+void	free_textures_map(t_mlx *mlx)
 {
-	int	c;
-
-	c = 0;
-	while (map->height > c)
+	free(mlx->west_texture.path);
+	free(mlx->east_texture.path);
+	free(mlx->south_texture.path);
+	free(mlx->north_texture.path);
+	if (mlx->map != NULL)
 	{
-		free(map->coord[c]);
-		c++;
+		free_split(mlx->map->coord);
+		free(mlx->map);
 	}
-	free(map->coord);
-	free(map);
 }
 
 void	ft_cleanup_and_exit(t_mlx *mlx)
@@ -31,17 +30,20 @@ void	ft_cleanup_and_exit(t_mlx *mlx)
 	if (mlx->mlx_connect != NULL)
 	{
 		mlx_destroy_image(mlx->mlx_connect, mlx->img.mlx_img);
-		mlx_destroy_image(mlx->mlx_connect, mlx->north_texture.mlx_img);
-		mlx_destroy_image(mlx->mlx_connect, mlx->south_texture.mlx_img);
-		mlx_destroy_image(mlx->mlx_connect, mlx->east_texture.mlx_img);
-		mlx_destroy_image(mlx->mlx_connect, mlx->west_texture.mlx_img);
+		if (mlx->north_texture.mlx_img)
+			mlx_destroy_image(mlx->mlx_connect, mlx->north_texture.mlx_img);
+		if (mlx->south_texture.mlx_img)
+			mlx_destroy_image(mlx->mlx_connect, mlx->south_texture.mlx_img);
+		if (mlx->east_texture.mlx_img)
+			mlx_destroy_image(mlx->mlx_connect, mlx->east_texture.mlx_img);
+		if (mlx->west_texture.mlx_img)
+			mlx_destroy_image(mlx->mlx_connect, mlx->west_texture.mlx_img);
 		if (mlx->mlx_win != NULL)
 			mlx_destroy_window(mlx->mlx_connect, mlx->mlx_win);
 		mlx_destroy_display(mlx->mlx_connect);
 		free(mlx->mlx_connect);
 	}
-	if (mlx->map != NULL)
-		free_map(mlx->map);
+	free_textures_map(mlx);
 	if (mlx->player != NULL)
 		free(mlx->player);
 	free(mlx);

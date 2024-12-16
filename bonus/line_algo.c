@@ -12,6 +12,29 @@
 
 #include "../headers/cub3d_bonus.h"
 
+void	ft_vision_angle(t_mlx *win, float px, float py)
+{
+	float	x_step;
+	float	y_step;
+	int		max;
+	int		end_x;
+	int		end_y;
+
+	end_x = px + 5 * win->player->player_delta_x;
+	end_y = py + 5 * win->player->player_delta_y;
+	x_step = end_x - px;
+	y_step = end_y - py;
+	max = fmax(ft_mod(x_step), ft_mod(y_step));
+	x_step /= max;
+	y_step /= max;
+	while ((int)(px - end_x) || (int)(py - end_y))
+	{
+		my_pixel_put(&win->img, px, py, 0xff00ff);
+		px += x_step;
+		py += y_step;
+	}
+}
+
 void	ft_vision_angle_mini(t_mlx *win, float x, float y)
 {
 	float	mini_end_x;
