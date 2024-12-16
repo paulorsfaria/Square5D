@@ -49,9 +49,9 @@ void	line_checker(char **line, t_temp_map *map)
 
 int	while_checker(t_temp_map *map, const int i, const int flag, int color)
 {
-	int	j;
+//	int	j;
 
-	j = -1;
+//	j = -1;
 	if (flag == 1)
 	{
 		(void)color;

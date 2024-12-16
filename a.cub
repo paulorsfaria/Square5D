@@ -1,5 +1,5 @@
-      F 105,105,135
-        C 225,30,0
+      F 205,92,92
+        C 223,255,0
 
 SO ./assets/south_texture.xpm
      NO ./assets/north_texture.xpm

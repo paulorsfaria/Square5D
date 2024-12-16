@@ -105,26 +105,43 @@ int	get_max_len(char **map)
 	}
 	return (max_len + 1);
 }
+int rgb_to_int(int red, int green, int blue)
+{
+    // Clamp the RGB values between 0 and 255
+    if (red < 0) red = 0;
+    if (red > 255) red = 255;
+    if (green < 0) green = 0;
+    if (green > 255) green = 255;
+    if (blue < 0) blue = 0;
+    if (blue > 255) blue = 255;
+
+    // Combine the RGB values into a single integer
+    return (red << 16) | (green << 8) | blue;
+}
+
 int	ft_get_colors(t_temp_map *map, int c)
 {
 	int		i;
-	int		j;
 	int		hex_color = 0;
 	char	**temp;
 	char	*color;
 
 	i = 0;
-	j = 0;
 	temp = NULL;
-	while (map->lines[i] && map->lines[i][0] != c)
-		i++;
-	if (map->lines[i][0] == c)
+	while (map->lines[i] && map->lines[i][0] != c) {
+        printf("%c | %c\n",i, map->lines[i][0]);
+        i++;
+    }
+
+    if (map->lines[i] && map->lines[i][0] == c)
 	{
 		temp = ft_split(map->lines[i], ' ');
 		color = ft_strdup(temp[1]);
 		free_split(temp);
 		temp =  ft_split(color, ',');
-		printf("%s | %s | %s\n", temp[0], temp[1], temp[2]);
+		printf("%d %d %d \n", ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+        hex_color = rgb_to_int(ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+        free_split(temp);
 	}
 	return (hex_color);
 }
@@ -132,14 +149,15 @@ int	ft_get_colors(t_temp_map *map, int c)
 
 void	set_up_win(t_mlx *win, t_temp_map *map)
 {
-	win->color_top = ft_get_colors(map, 'F');;
-	win->color_bot = ft_get_colors(map, 'C');;
+
 	win->mlx_connect = 0;
 	win->mlx_win = 0;
 	win->map = 0;
 	win->texture_nbr = 0;
 	win->map = ft_calloc(sizeof(t_map), 1);
 	win->map->coord = get_final_map(map);
+    win->color_top = ft_get_colors(map, 'F');
+    win->color_bot = ft_get_colors(map, 'C');
 	win->player = ft_calloc(sizeof(t_player), 1);
 	win->north_texture.path = get_texture_path(map, 'N');
 	win->south_texture.path = get_texture_path(map, 'S');
