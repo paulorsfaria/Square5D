@@ -107,16 +107,20 @@ int	get_max_len(char **map)
 }
 int rgb_to_int(int red, int green, int blue)
 {
-    // Clamp the RGB values between 0 and 255
-    if (red < 0) red = 0;
-    if (red > 255) red = 255;
-    if (green < 0) green = 0;
-    if (green > 255) green = 255;
-    if (blue < 0) blue = 0;
-    if (blue > 255) blue = 255;
+    if (red < 0)
+        red = 0;
+    if (red > 255)
+        red = 255;
+    if (green < 0)
+        green = 0;
+    if (green > 255)
+        green = 255;
+    if (blue < 0)
+        blue = 0;
+    if (blue > 255)
+        blue = 255;
 
-    // Combine the RGB values into a single integer
-    return (red << 16) | (green << 8) | blue;
+    return ((red << 16) | (green << 8) | blue);//changed things hjero to add (
 }
 
 int	ft_get_colors(t_temp_map *map, int c)
