@@ -125,7 +125,6 @@ int	ft_get_colors(t_temp_map *map, int c)
 		free_split(temp);
 		temp =  ft_split(color, ',');
 		printf("%s | %s | %s\n", temp[0], temp[1], temp[2]);
-
 	}
 	return (hex_color);
 }
