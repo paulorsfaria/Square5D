@@ -62,7 +62,7 @@ void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
 {
 	int			y;
 	int			x;
-	static int	v; // to remove
+	static int	v;
 
 	y = 0;
 	while (y < map->height)
@@ -75,7 +75,7 @@ void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
 			else if (map->coord[y][x] == '0' || map->coord[y][x] == ' ')
 				draw_square(img, x, y, 0xFFFFFF);
 			else if (map->coord[y][x] == 'N' || map->coord[y][x] == 'W'
-					 || map->coord[y][x] == 'S' || map->coord[y][x] == 'E' )
+				|| map->coord[y][x] == 'S' || map->coord[y][x] == 'E' )
 			{
 				draw_square(img, x, y, 0xFFFFFF);
 				if (v == 0)
@@ -90,7 +90,6 @@ void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
 		y++;
 	}
 }
-
 
 void	ft_draw_mini_map(t_map *map, t_img *img, int x, int y)
 {

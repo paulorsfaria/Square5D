@@ -21,13 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5a503b18-b43e-4391-951d-960a73990013" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/clean_rotine.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/clean_rotine.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.cub" beforeDir="false" afterPath="$PROJECT_DIR$/a.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bonus/draw_shapes.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/draw_shapes.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/line_algo.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/line_algo.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_assets.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/parse/ft_assets.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/parse/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bonus/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/cub3d_bonus.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d_bonus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_assets.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_assets.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/vanilla/draw_shapes.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/draw_shapes.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/vanilla/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +68,11 @@
         </entry>
       </map>
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -80,27 +87,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/paulo-do/Videos/fuck/bonus",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/paulo-do/Videos/fuck/bonus&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bonus" />
@@ -110,6 +117,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.all">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -140,11 +152,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bonus" />
@@ -169,7 +176,8 @@
       <workItem from="1734228433249" duration="2658000" />
       <workItem from="1734284633632" duration="8114000" />
       <workItem from="1734358495486" duration="11847000" />
-      <workItem from="1734383077221" duration="1378000" />
+      <workItem from="1734383077221" duration="1606000" />
+      <workItem from="1734384700828" duration="3555000" />
     </task>
     <servers />
   </component>

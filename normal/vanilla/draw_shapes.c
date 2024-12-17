@@ -34,13 +34,12 @@ void	draw_square(t_img *img, int x, int y, int color)
 		i++;
 	}
 }
-//TODO remover a coordenada do player quando o Paulo tiver a colocar na estrutura
 
 void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
 {
 	int			y;
 	int			x;
-	static int	v; // to remove
+	static int	v;
 
 	y = 0;
 	while (y < map->height)

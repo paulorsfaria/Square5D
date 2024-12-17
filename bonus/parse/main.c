@@ -21,9 +21,9 @@ int	draw(t_mlx *win)
 	raycaster(win);
 	ft_draw_mini_map(win->map, &win->img, -1, -1);
 	ft_update_player((win->player->x / SQUARE) * SQUARE_MINI,
-					 (win->player->y / SQUARE) * SQUARE_MINI, &win->img, win);
+		(win->player->y / SQUARE) * SQUARE_MINI, &win->img, win);
 	mlx_put_image_to_window(win->mlx_connect, win->mlx_win,
-							win->img.mlx_img, 0, 0);
+		win->img.mlx_img, 0, 0);
 	return (0);
 }
 

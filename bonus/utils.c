@@ -33,7 +33,7 @@ int	ft_circle_normalizer(float *ra)
 	return (SUCCESS);
 }
 
-char **get_final_map(t_temp_map *map)
+char	**get_final_map(t_temp_map *map)
 {
 	int		i;
 	int		j;
@@ -57,9 +57,9 @@ char **get_final_map(t_temp_map *map)
 	return (new_map);
 }
 
-int get_map_size(char **map)
+int	get_map_size(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i] != NULL)
@@ -67,13 +67,13 @@ int get_map_size(char **map)
 	return (i);
 }
 
-char *get_texture_path(t_temp_map *map, int c)
+char	*get_texture_path(t_temp_map *map, int c)
 {
-	int i;
-	char **temp;
-	char *path;
-	path = NULL;
+	int		i;
+	char	**temp;
+	char	*path;
 
+	path = NULL;
 	i = 0;
 	while (map->lines[i] && map->lines[i][0] != c)
 		i++;
@@ -88,8 +88,8 @@ char *get_texture_path(t_temp_map *map, int c)
 
 int	get_max_len(char **map)
 {
-	int i;
-	int max_len;
+	int	i;
+	int	max_len;
 
 	i = 0;
 	max_len = -1;
@@ -101,7 +101,8 @@ int	get_max_len(char **map)
 	}
 	return (max_len + 1);
 }
-int rgb_to_int(int red, int green, int blue)
+
+int	rgb_to_int(int red, int green, int blue)
 {
 	if (red < 0)
 		red = 0;
@@ -121,10 +122,11 @@ int rgb_to_int(int red, int green, int blue)
 int	ft_get_colors(t_temp_map *map, int c)
 {
 	int		i;
-	int		hex_color = 0;
+	int		hex_color;
 	char	**temp;
 	char	*color;
 
+	hex_color = 0;
 	i = 0;
 	temp = NULL;
 	while (map->lines[i] && map->lines[i][0] != c)
@@ -134,13 +136,15 @@ int	ft_get_colors(t_temp_map *map, int c)
 		temp = ft_split(map->lines[i], ' ');
 		color = ft_strdup(temp[1]);
 		free_split(temp);
-		temp =  ft_split(color, ',');
-		hex_color = rgb_to_int(ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+		temp = ft_split(color, ',');
+		hex_color = rgb_to_int(ft_atoi(temp[0]),
+				ft_atoi(temp[1]), ft_atoi(temp[2]));
 		free_split(temp);
 		free(color);
 	}
 	return (hex_color);
 }
+
 float	ft_set_player(t_mlx *win, char **map)
 {
 	int	i;
@@ -151,22 +155,23 @@ float	ft_set_player(t_mlx *win, char **map)
 	while (map[++i] != NULL)
 	{
 		while (map[i][j] != '\0' && map[i][j] != 'S'
-			   && map[i][j] != 'N' && map[i][j] != 'W' && map[i][j] != 'E')
+			&& map[i][j] != 'N' && map[i][j] != 'W' && map[i][j] != 'E')
 			j++;
 		if (map[i][j] != '\0')
-			break;
+			break ;
 		j = 0;
 	}
-	win->player->x = (float)i;
-	win->player->y = (float)j;
+	win->player->x = (float) i;
+	win->player->y = (float) j;
 	if (map[i][j] == 'S')
-		return(4.712389);
+		return (4.712389);
 	if (map[i][j] == 'N')
-		return(1.570796);
+		return (1.570796);
 	if (map[i][j] == 'E')
-		return(3.141593);
-	return(0);
+		return (3.141593);
+	return (0);
 }
+
 void	set_up_win(t_mlx *win, t_temp_map *map)
 {
 	win->mlx_connect = 0;

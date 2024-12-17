@@ -12,17 +12,10 @@
 
 #include "../../headers/cub3d_bonus.h"
 
-void	val_text(char **temp, t_temp_map *map)
-{
-	(void)temp;
-	(void)map;
-}
-
 void	line_checker(char **line, t_temp_map *map)
 {
 	if (!line[0] || !line[1])
 	{
-		val_text(line, map);
 		free_split(line);
 		error_central(-9, map);
 	}

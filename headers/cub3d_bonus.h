@@ -74,7 +74,7 @@ typedef struct s_temp_map
 	char		**lines;
 	int			size;
 	int			start;
-	t_valid_map *valid;
+	t_valid_map	*valid;
 	t_player_p	*player;
 }			t_temp_map;
 
@@ -193,8 +193,6 @@ typedef struct s_mlx
 	int			texture_nbr;
 }	t_mlx;
 
-
-
 void	ft_vision_angle(t_mlx *win, float px, float py);
 
 // --------------- img_create.c ------------------ //
@@ -252,7 +250,6 @@ void	ft_rotate_left(t_mlx *mlx);
 void	ft_init_vars(t_ray_vars	*vars, t_mlx *win);
 char	ft_is_wall(float next_x, float next_y, char **map);
 
-
 //ft_getters
 int		ft_get_file_size(char *file);
 
@@ -265,7 +262,7 @@ void	print_error(char *str, t_temp_map *map);
 
 //ft_getters
 void	ft_get_map(t_temp_map **map, char *file);
-int	ft_get_start_map(t_temp_map *map);
+int		ft_get_start_map(t_temp_map *map);
 
 //freedom city
 void	free_map_parse(t_temp_map **map);
@@ -273,12 +270,11 @@ void	free_split(char **str);
 
 //color validations
 int		col_val(t_temp_map *map, int i);
-int 	ft_invalid_start(t_temp_map *map, char c, int i);
+int		ft_invalid_start(t_temp_map *map, char c, int i);
 int		check_extension(char *file_name, char *ext, int len);
 
 //val_colo_utils
-void	check_next_char(t_temp_map *map,int c, int i);
-
+void	check_next_char(t_temp_map *map, int c, int i);
 
 //ft_assets
 void	check_textures(t_temp_map *map, int i, int j, char **temp);
@@ -299,5 +295,5 @@ void	first_check(t_temp_map *map, int i, int j);
 
 //ft_validations
 void	ft_validations(char *argv[]);
-int	is_whitespace(char c);
+int		is_whitespace(char c);
 #endif
