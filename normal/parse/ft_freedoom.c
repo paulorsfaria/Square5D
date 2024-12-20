@@ -43,3 +43,10 @@ void	free_split(char **str)
 		free(str[j++]);
 	free(str);
 }
+
+void	ft_free_pack(t_temp_map *map, char *temp_line, char **temp)
+{
+	free(temp_line);
+	free_split(temp);
+	error_central(-9, map);
+}

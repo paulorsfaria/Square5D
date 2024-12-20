@@ -23,3 +23,30 @@ void	check_next_char(t_temp_map *map, int c, int i)
 	if ((c == 'F' || c == 'C') && map->lines[i][1] != ' ')
 		error_central(-7, map);
 }
+
+char	*ft_color_special(char *line, int j, int i, t_temp_map *map)
+{
+	char	*new_line;
+
+	new_line = ft_calloc(sizeof(char), ft_strlen(line) + 2);
+	if (!new_line)
+		 error_central(-15, map);
+	while (line[i] != '\0')
+	{
+		while (line[i] != '\0' && !is_whitespace(line[i]))
+		{
+			new_line[j] = line[i];
+			if ((line[i] == 'F' || line[i] == 'C') && is_whitespace(line[i + 1]))
+				new_line[++j] = ' ';
+			j++;
+			i++;
+		}
+		while (line[i] != '\0' && !is_whitespace(line[i]))
+			new_line[j++] = line[i++];
+		while (is_whitespace(line[i]))
+			i++;
+	}
+	new_line[j] = '\0';
+	free(line);
+	return (new_line);
+}

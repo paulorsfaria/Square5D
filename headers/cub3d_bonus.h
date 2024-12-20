@@ -6,7 +6,7 @@
 /*   By: diogosan <diogosan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:56:41 by diogosan          #+#    #+#             */
-/*   Updated: 2024/12/03 16:26:46 by diogosan         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:38:02 by diogosan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@
 # define OBSTACLE_COLOR 0x000000
 
 # define DR 0.000545415 //(FOV / WIDTH)
+
+typedef struct s_coords
+{
+	int	top_left_x;
+	int	top_left_y;
+	int	bottom_right_x;
+	int	bottom_right_y;
+}	t_coords;
 
 typedef struct s_valid_map
 {
@@ -209,7 +217,6 @@ int		arrow_keys(int Key, t_mlx *mlx);
 // --------------- draw_shapes.c ---------------- //
 
 void	ft_update_player(float px, float py, t_img *img, t_mlx *win);
-void	ft_draw_map(t_map *map, t_img *img, t_mlx *win);
 void	draw_square(t_img *img, int x, int y, int color);
 void	ft_draw_mini_map(t_map *map, t_img *img, int x, int y);
 
@@ -220,6 +227,8 @@ void	set_up_win(t_mlx *win, t_temp_map *map);
 float	line_length(float x1, float y1, float x2, float y2);
 int		ft_circle_normalizer(float *ra);
 void	ft_value_setter(float *val1, float *set1, float *val2, float *set2);
+int		rgb_to_int(int red, int green, int blue);
+char	*ft_copy_line(char *map, int max_line);
 
 // --------------- raycast.c --------------------- //
 
@@ -248,10 +257,21 @@ int		ft_event_checker(int Key, t_mlx *mlx);
 void	ft_rotate_right(t_mlx *mlx);
 void	ft_rotate_left(t_mlx *mlx);
 void	ft_init_vars(t_ray_vars	*vars, t_mlx *win);
-char	ft_is_wall(float next_x, float next_y, char **map);
+char	ft_is_wall(float next_x, float next_y, float player_size, t_mlx *mlx);
+
+//ft_get_map
+char	*get_texture_path(t_temp_map *map, int c);
+int		ft_get_max_line(int i, t_temp_map *map);
+int		ft_get_colors(t_temp_map *map, int c);
+char	**get_final_map(t_temp_map *map);
+int		get_map_size(char **map);
+
+//ft_setters
+float	ft_set_player(t_mlx *win, char **map);
+void	set_up_win(t_mlx *win, t_temp_map *map);
 
 //ft_getters
-int		ft_get_file_size(char *file);
+int		ft_get_file_size(char *file, t_temp_map *map);
 
 //val_exts
 int		ft_check_file_name(char *file_name);
@@ -267,6 +287,7 @@ int		ft_get_start_map(t_temp_map *map);
 //freedom city
 void	free_map_parse(t_temp_map **map);
 void	free_split(char **str);
+void	ft_free_pack(t_temp_map *map, char *temp_line, char **temp);
 
 //color validations
 int		col_val(t_temp_map *map, int i);
@@ -275,6 +296,7 @@ int		check_extension(char *file_name, char *ext, int len);
 
 //val_colo_utils
 void	check_next_char(t_temp_map *map, int c, int i);
+char	*ft_color_special(char *line, int j, int i, t_temp_map *map);
 
 //ft_assets
 void	check_textures(t_temp_map *map, int i, int j, char **temp);
@@ -291,7 +313,7 @@ int		check_the_sides(char **map, int y, int map_size);
 void	ft_do_flood(t_temp_map *map, int start, int end, int i);
 
 //ft_checkers
-void	first_check(t_temp_map *map, int i, int j);
+void	first_check(t_temp_map *map, int i);
 
 //ft_validations
 void	ft_validations(char *argv[]);

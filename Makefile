@@ -6,16 +6,17 @@ CFLAGS = -Wall -Wextra -Werror
 
 MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie -lm
 
-NAME = cub3d
+NAME = cub3D
 
 NAME_BONUS = cub3d_bonus
 
 SRCS_D = normal/vanilla/img_create.c normal/vanilla/events.c normal/vanilla/draw_shapes.c normal/vanilla/utils.c \
 		normal/vanilla/raycast.c normal/vanilla/wall_and_textures.c normal/vanilla/line_algo.c \
-		normal/vanilla/clean_rotine.c normal/vanilla/utils2.c
+		normal/vanilla/clean_rotine.c normal/vanilla/utils2.c normal/vanilla/ft_get_map.c normal/vanilla/ft_setters.c
 
 SRCS_D_bonus = bonus/img_create.c bonus/events.c bonus/draw_shapes.c bonus/utils.c bonus/raycast.c \
-		bonus/wall_and_textures.c bonus/line_algo.c bonus/clean_rotine.c bonus/utils2.c
+		bonus/wall_and_textures.c bonus/line_algo.c bonus/clean_rotine.c bonus/utils2.c bonus/ft_get_map.c \
+		bonus/ft_setters.c
 
 SRCS_P_bonus = bonus/parse/flood_map.c bonus/parse/ft_freedoom.c bonus/parse/val_color.c \
 				bonus/parse/ft_assets.c bonus/parse/ft_getters.c bonus/parse/val_colo_utils.c \
@@ -23,9 +24,9 @@ SRCS_P_bonus = bonus/parse/flood_map.c bonus/parse/ft_freedoom.c bonus/parse/val
 				bonus/parse/ft_error.c bonus/parse/val_map.c bonus/parse/main.c
 
 SRCS_P = normal/parse/flood_map.c normal/parse/ft_freedoom.c normal/parse/val_colo_utils.c \
-	normal/parse/ft_assets.c normal/parse/ft_getters.c normal/parse/val_extensions.c \
-	normal/parse/ft_checkers.c normal/parse/main.c normal/parse/val_map.c \
-	normal/parse/ft_error.c normal/parse/val_color.c normal/parse/ft_validations.c
+			normal/parse/ft_assets.c normal/parse/ft_getters.c normal/parse/val_extensions.c \
+			normal/parse/ft_checkers.c normal/parse/main.c normal/parse/val_map.c \
+			normal/parse/ft_error.c normal/parse/val_color.c normal/parse/ft_validations.c
 
 
 SRCS = $(SRCS_D) $(SRCS_P)

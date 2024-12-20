@@ -15,7 +15,6 @@
 int	draw(t_mlx *win)
 {
 	render_background(&win->img, 0xD3D3D3);
-	ft_draw_map(win->map, &win->img, win);
 	ft_update_player(win->player->x, win->player->y,
 		&win->img, win);
 	ft_vision_angle(win, win->player->x, win->player->y);
@@ -31,7 +30,10 @@ void	start_textures(t_mlx *win, t_tex *texture)
 	texture->mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
 			texture->path, &texture->width, &texture->height);
 	if (texture->mlx_img == NULL)
+	{
+		ft_printf_err("Error in texture path\n");
 		ft_cleanup_and_exit(win);
+	}
 	texture->addr = mlx_get_data_addr(texture->mlx_img,
 			&texture->bpp, &texture->line_len,
 			&texture->endian);
@@ -55,6 +57,7 @@ void	render(t_mlx *win)
 	mlx_loop(win->mlx_connect);
 }
 
+
 char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
 {
 	char	*line;
@@ -65,11 +68,8 @@ char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
 	j = 0;
 	line = ft_calloc(sizeof(char), ft_strlen(str) + 1);
 	if (!line)
-	{
-		ft_printf_err("Error in calloc\n");
-		error_central(0, map);
-	}
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		error_central(-15, map);
+	while (is_whitespace(str[i]))
 		i++;
 	while (str[i])
 	{
@@ -81,6 +81,8 @@ char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
 			line[j++] = ' ';
 	}
 	line[j] = '\0';
+	if (line[0] == 'C' || line[0] == 'F')
+		line = ft_color_special(line, 0, 0, map);
 	return (line);
 }
 
@@ -95,7 +97,7 @@ int	main(int argc, char *argv[])
 		ft_validations(argv);
 		map = ft_calloc(sizeof(t_temp_map), 1);
 		map->player = ft_calloc(sizeof(t_player), 1);
-		map->size = ft_get_file_size(argv[1]);
+		map->size = ft_get_file_size(argv[1], map);
 		ft_get_map(&map, argv[1]);
 		win = ft_calloc(sizeof(t_mlx), 1);
 		set_up_win(win, map);
@@ -106,6 +108,5 @@ int	main(int argc, char *argv[])
 		ft_printf_err("Only one input is accepted");
 	else
 		ft_printf_err("Please use:\n./cub3d pwd/to/the/map\n");
-	ft_printf("Thank you for using our print a square services\n");
 	return (0);
 }

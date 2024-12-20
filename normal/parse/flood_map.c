@@ -69,17 +69,20 @@ void	flood(t_temp_map *map, int y, int x, int map_size)
 {
 	if (y > map_size || y < map->start)
 		return ;
-	if (x > (int)ft_strlen(map->lines[y]))
+	if (x < 0 || x > (int)ft_strlen(map->lines[y]))
 		return ;
 	if (map->lines[y][x] != '0' && map->lines[y][x] != ' '
-		&& map->lines[y][x] != 'N')
+		&& map->lines[y][x] != map->player->player)
 		return ;
 	if (map->lines[y][x] == '0' || map->lines[y][x] == ' ')
+		map->lines[y][x] = 'F';
+	if (map->lines[y][x] == 'N' || map->lines[y][x] == 'S'
+		||map->lines[y][x] == 'E' || map->lines[y][x] == 'W')
 		map->lines[y][x] = 'F';
 	flood(map, y + 1, x, map_size);
 	flood(map, y - 1, x, map_size);
 	flood(map, y, x + 1, map_size);
-	flood(map, y, x -1, map_size);
+	flood(map, y, x - 1, map_size);
 }
 
 void	ft_do_flood(t_temp_map *map, int start, int end, int i)

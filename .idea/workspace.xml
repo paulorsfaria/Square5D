@@ -3,14 +3,17 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="fuck" targetName="cub3d_bonus" />
-      <config projectName="fuck" targetName="fclean" />
-      <config projectName="fuck" targetName="bonus" />
-      <config projectName="fuck" targetName="cub3d" />
-      <config projectName="fuck" targetName="re" />
-      <config projectName="fuck" targetName="all" />
+      <config projectName="cub3d" targetName="cub3d_bonus" />
+      <config projectName="cub3d" targetName="fclean" />
+      <config projectName="cub3d" targetName="cub3D" />
+      <config projectName="cub3d" targetName="bonus" />
+      <config projectName="cub3d" targetName="all" />
+      <config projectName="cub3d" targetName="re" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -20,16 +23,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a503b18-b43e-4391-951d-960a73990013" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.cub" beforeDir="false" afterPath="$PROJECT_DIR$/a.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/draw_shapes.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/draw_shapes.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_assets.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/parse/ft_assets.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/parse/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/parse/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bonus/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/bonus/utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/clean_rotine.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/draw_shapes.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/events.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/ft_get_map.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/ft_setters.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/img_create.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/line_algo.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/flood_map.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_assets.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_checkers.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_error.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_freedoom.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_getters.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/ft_validations.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/val_colo_utils.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/val_color.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/val_extensions.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/parse/val_map.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/raycast.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/utils2.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bonus/wall_and_textures.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/headers/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/cub3d_bonus.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d_bonus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/libft/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line_bonus.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line_utils.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/libft/get_next_line/get_next_line_utils_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/flood_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/flood_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/normal/parse/ft_assets.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_assets.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/vanilla/draw_shapes.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/draw_shapes.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/vanilla/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_checkers.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_checkers.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_error.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_error.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_getters.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_getters.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/ft_validations.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_validations.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/val_colo_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/val_colo_utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/parse/val_color.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/val_color.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normal/vanilla/ft_get_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/vanilla/ft_get_map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,14 +94,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="fuck" />
+              <option name="name" value="cub3d" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="fuck" />
+                <option name="name" value="cub3d" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -73,6 +114,9 @@
         <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
       </map>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -99,17 +143,19 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/paulo-do/Videos/fuck/bonus&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/paulo-do/Videos/cub3d&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/normal/vanilla" />
       <recent name="$PROJECT_DIR$/bonus" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -122,32 +168,32 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="bonus" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="bonus" CONFIG_NAME="bonus" version="1">
+    <configuration name="bonus" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="bonus" CONFIG_NAME="bonus" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cub3d" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="cub3d" CONFIG_NAME="cub3d" version="1">
+    <configuration name="cub3D" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3D" CONFIG_NAME="cub3D" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cub3d_bonus" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="cub3d_bonus" CONFIG_NAME="cub3d_bonus" version="1">
+    <configuration name="cub3d_bonus" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3d_bonus" CONFIG_NAME="cub3d_bonus" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fuck" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -155,7 +201,7 @@
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bonus" />
-      <item itemvalue="Native Application.cub3d" />
+      <item itemvalue="Native Application.cub3D" />
       <item itemvalue="Native Application.cub3d_bonus" />
       <item itemvalue="Native Application.fclean" />
       <item itemvalue="Native Application.re" />
@@ -177,7 +223,23 @@
       <workItem from="1734284633632" duration="8114000" />
       <workItem from="1734358495486" duration="11847000" />
       <workItem from="1734383077221" duration="1606000" />
-      <workItem from="1734384700828" duration="3555000" />
+      <workItem from="1734384700828" duration="4315000" />
+      <workItem from="1734437324853" duration="983000" />
+      <workItem from="1734444312855" duration="287000" />
+      <workItem from="1734444610260" duration="1316000" />
+      <workItem from="1734449914472" duration="2750000" />
+      <workItem from="1734593335574" duration="2570000" />
+      <workItem from="1734595916127" duration="1937000" />
+      <workItem from="1734601045346" duration="4450000" />
+      <workItem from="1734616733387" duration="309000" />
+      <workItem from="1734624235732" duration="6085000" />
+      <workItem from="1734631681632" duration="15574000" />
+      <workItem from="1734692963501" duration="5842000" />
+      <workItem from="1734706476372" duration="701000" />
+      <workItem from="1734707185850" duration="9000" />
+      <workItem from="1734707203127" duration="17000" />
+      <workItem from="1734707227622" duration="557000" />
+      <workItem from="1734707908500" duration="8950000" />
     </task>
     <servers />
   </component>

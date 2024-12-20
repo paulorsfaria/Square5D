@@ -35,39 +35,6 @@ void	draw_square(t_img *img, int x, int y, int color)
 	}
 }
 
-void	ft_draw_map(t_map *map, t_img *img, t_mlx *win)
-{
-	int			y;
-	int			x;
-	static int	v;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width && map->coord[y][x] != '\0')
-		{
-			if (map->coord[y][x] == '1')
-				draw_square(img, x, y, 0x000000);
-			else if (map->coord[y][x] == '0' || map->coord[y][x] == ' ')
-				draw_square(img, x, y, 0xFFFFFF);
-			else if (map->coord[y][x] == 'N' || map->coord[y][x] == 'W'
-				|| map->coord[y][x] == 'S' || map->coord[y][x] == 'E' )
-			{
-				draw_square(img, x, y, 0xFFFFFF);
-				if (v == 0)
-				{
-					win->player->x = x * SQUARE + PLAYER_SIZE;
-					win->player->y = y * SQUARE + PLAYER_SIZE;
-					v++;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
 void	ft_update_player(int px, int py, t_img *img, t_mlx *win)
 {
 	float	y;
