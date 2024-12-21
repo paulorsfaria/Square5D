@@ -255,16 +255,15 @@ int		ft_check_file_name(char *file_name);
 
 //ft_error
 int		error_central(int error_code, t_temp_map *map);
-void	print_error(char *str, t_temp_map *map);
 
 //ft_getters
-void	ft_get_map(t_temp_map **map, char *file);
+void	ft_get_map(t_temp_map **map, char *file, int i, int j);
 int		ft_get_start_map(t_temp_map *map);
 
 //freedom city
 void	free_map_parse(t_temp_map **map);
 void	free_split(char **str);
-void	ft_free_pack(t_temp_map *map, char *temp_line, char **temp);
+void	ft_free_pack(t_temp_map *map, char **temp);
 
 //color validations
 int		col_val(t_temp_map *map, int i);
@@ -276,7 +275,7 @@ void	check_next_char(t_temp_map *map, int c, int i);
 char	*ft_color_special(char *line, int j, int i, t_temp_map *map);
 
 //ft_assets
-void	check_textures(t_temp_map *map, int i, int j, char **temp);
+void	check_textures(t_temp_map *map, int i);
 
 char	*ft_remove_extra_spaces(char *str, t_temp_map *map);
 

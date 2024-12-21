@@ -14,7 +14,6 @@
 
 void	ft_end_gnl(int fd, t_temp_map *map, char *line)
 {
-
 	ft_printf_err("Error\nFile to big\n");
 	get_next_line(-1);
 	free(map->player);
@@ -46,17 +45,19 @@ int	ft_get_file_size(char *file, t_temp_map *map)
 	close(fd);
 	return (size + 1);
 }
+
 char	*swap_strings(char *str, t_temp_map *map)
 {
-	char *new_str;
+	char	*new_str;
+
 	if (str[0] == '\0')
-		return str;
+		return (str);
 	new_str = ft_remove_extra_spaces(str, map);
 	free(str);
 	return (new_str);
-
 }
-int ft_check_start_map(t_temp_map *map, char *line)
+
+int	ft_check_start_map(t_temp_map *map, char *line)
 {
 	char *temp;
 
@@ -67,17 +68,14 @@ int ft_check_start_map(t_temp_map *map, char *line)
 	return (1);
 
 }
-void	ft_get_map(t_temp_map **map, char *file)
+
+void	ft_get_map(t_temp_map **map, char *file, int i, int j)
 {
 	int	fd;
-	int	i;
-	int	j;
 	int not_map;
 
 	not_map = -1;
 	fd = 0;
-	i = 0;
-	j = 0;
 	(*map)->lines = ft_calloc(sizeof(char *), (*map)->size + 1);
 	(*map)->valid = ft_calloc(sizeof(t_valid_map), 1);
 	fd = open (file, O_RDONLY);

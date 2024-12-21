@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:22:51 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/12/20 18:14:58 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/12/21 13:31:17 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_colors_limits(char *line, t_temp_map *map)
 	line[1] = ',';
 	new = ft_split(line, ',');
 	if (!new[0] || !new[1] || !new[2] || !new[3])
-		return (printf("fuck"), free(line), free_split(new), error_central(-5, map));
+		return (free_split(new), error_central(-5, map));
 	if (ft_atoi(new[1]) > 255 || ft_atoi(new[2]) > 255
 		|| ft_atoi(new[3]) > 255)
 		flag = -1;
@@ -30,17 +30,12 @@ int	check_colors_limits(char *line, t_temp_map *map)
 		flag = -1;
 	free_split(new);
 	if (flag == -1)
-		return (free(line), error_central(-6, map));
+		return (error_central(-6, map));
 	return (1);
 }
 
 int	check_colors(char *line, t_temp_map *map, int comma, int i)
 {
-//	printf("there\n");
-//	while(line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
-//		i++;
-//	printf("there\n");
-	printf("%s\n", line);
 	while (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
 		i++;
 	if (line[i + 1] != '\0')
@@ -56,7 +51,6 @@ int	check_colors(char *line, t_temp_map *map, int comma, int i)
 			return (-1);
 		if (line[i] != '\0' && line[i] != '\n')
 			i++;
-
 	}
 	if ((line[i] != '\0' && line[i] != '\n') || comma != 2)
 		return (error_central(-6, map));

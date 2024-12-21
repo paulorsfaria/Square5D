@@ -90,11 +90,9 @@ char	*get_next_line(int fd)
 {
 	static char	*stack;
 	char		*line;
-	if (fd == -1)
-	{
-		free(stack);
-	}
 
+	if (fd == -1)
+		free(stack);
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	stack = read_file(fd, stack);

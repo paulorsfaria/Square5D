@@ -27,11 +27,16 @@ int	draw(t_mlx *win)
 
 void	start_textures(t_mlx *win, t_tex *texture)
 {
+	if (texture->path == NULL)
+	{
+		ft_printf_err("Error\nError in texture path\n");
+		ft_cleanup_and_exit(win);
+	}
 	texture->mlx_img = mlx_xpm_file_to_image(win->mlx_connect,
 			texture->path, &texture->width, &texture->height);
 	if (texture->mlx_img == NULL)
 	{
-		ft_printf_err("Error in texture path\n");
+		ft_printf_err("Error\nError in texture path\n");
 		ft_cleanup_and_exit(win);
 	}
 	texture->addr = mlx_get_data_addr(texture->mlx_img,
@@ -56,7 +61,6 @@ void	render(t_mlx *win)
 	mlx_hook(win->mlx_win, 17, 0, ft_close, win);
 	mlx_loop(win->mlx_connect);
 }
-
 
 char	*ft_remove_extra_spaces(char *str, t_temp_map *map)
 {
@@ -98,7 +102,7 @@ int	main(int argc, char *argv[])
 		map = ft_calloc(sizeof(t_temp_map), 1);
 		map->player = ft_calloc(sizeof(t_player), 1);
 		map->size = ft_get_file_size(argv[1], map);
-		ft_get_map(&map, argv[1]);
+		ft_get_map(&map, argv[1], 0, 0);
 		win = ft_calloc(sizeof(t_mlx), 1);
 		set_up_win(win, map);
 		free_map_parse(&map);

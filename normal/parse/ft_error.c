@@ -19,7 +19,7 @@ void	error_central_extra(int error_code)
 	if (error_code == -9)
 		ft_printf_err("Missing textures\n");
 	if (error_code == -10)
-		ft_printf_err("invalid texture\n");
+		ft_printf_err("Invalid texture\n");
 	if (error_code == -11)
 		ft_printf_err("Error in colors or assets\n");
 	if (error_code == -12)
@@ -30,6 +30,10 @@ void	error_central_extra(int error_code)
 		ft_printf_err("Open map\n");
 	if (error_code == -15)
 		ft_printf_err("Error in ft_calloc\n");
+	if (error_code == -16)
+		ft_printf_err("Invalid ext.\n");
+	if (error_code == -17)
+		ft_printf_err("Error in textures\n");
 }
 
 int	error_central(int error_code, t_temp_map *map)
@@ -38,7 +42,7 @@ int	error_central(int error_code, t_temp_map *map)
 		free_map_parse(&map);
 	ft_printf_err("Error\n");
 	if (error_code == -1)
-		ft_printf_err("invalid file\n");
+		ft_printf_err("Invalid file\n");
 	if (error_code == -2)
 		ft_printf_err("Cant open this file\n");
 	if (error_code == -3)
@@ -48,16 +52,10 @@ int	error_central(int error_code, t_temp_map *map)
 	if (error_code == -5)
 		ft_printf_err("Missing colors\n");
 	if (error_code == -6)
-		ft_printf_err("colors must be from 0 to 255\n");
+		ft_printf_err("Colors must be from 0 to 255\n");
 	if (error_code == -7)
-		ft_printf_err("invalid characters\n");
+		ft_printf_err("Invalid characters\n");
 	if (error_code < -7)
 		error_central_extra(error_code);
 	exit(EXIT_FAILURE);
-}
-
-void	print_error(char *str, t_temp_map *map)
-{
-	ft_printf_err("Missing %s\n", str);
-	error_central(0, map);
 }

@@ -35,7 +35,6 @@ int	ft_get_colors(t_temp_map *map, int c)
 	i = 0;
 	hex_color = 0;
 	temp = NULL;
-
 	while (map->lines[i] && map->lines[i][0] != c)
 		i++;
 	if (map->lines[i] && map->lines[i][0] == c)
@@ -103,7 +102,8 @@ char	*get_texture_path(t_temp_map *map, int c)
 		free(map->lines[i]);
 		map->lines[i] = line;
 		temp = ft_split(map->lines[i], ' ');
-		path = ft_strdup(temp[1]);
+		if (temp[1] && !temp[2])
+			path = ft_strdup(temp[1]);
 		free_split(temp);
 	}
 	return (path);
