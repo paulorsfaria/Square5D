@@ -264,6 +264,8 @@ int		ft_get_start_map(t_temp_map *map);
 void	free_map_parse(t_temp_map **map);
 void	free_split(char **str);
 void	ft_free_pack(t_temp_map *map, char **temp);
+void	ft_end_gnl(int fd, t_temp_map *map, char *line);
+
 
 //color validations
 int		col_val(t_temp_map *map, int i);

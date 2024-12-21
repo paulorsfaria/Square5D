@@ -56,6 +56,16 @@ void	set_player(t_temp_map *map, int i, int start, int j)
 	map->player->player = map->lines[map->player->y + start][map->player->x];
 }
 
+int	set_j(char *line)
+{
+	int	j;
+
+	j = 0;
+	while (line[j] == ' ')
+		j++;
+	return (j);
+}
+
 void	check_map(t_temp_map *map, int start, int end, int i)
 {
 	int	j;
@@ -64,9 +74,7 @@ void	check_map(t_temp_map *map, int start, int end, int i)
 	player_cnt = 0;
 	while (map->lines[++i])
 	{
-		j = 0;
-		while (map->lines[i][j] == ' ')
-			j++;
+		j = set_j(map->lines[i]);
 		if (start == 0 && (map->lines[i][j] == '1' || map->lines[i][j] == '0'))
 			start = i;
 		else if (map->lines[i][j] == '1' || map->lines[i][j] == '0')

@@ -49,3 +49,14 @@ void	ft_free_pack(t_temp_map *map, char **temp)
 	free_split(temp);
 	error_central(-10, map);
 }
+
+void	ft_end_gnl(int fd, t_temp_map *map, char *line)
+{
+	ft_printf_err("Error\nFile to big\n");
+	get_next_line(-1);
+	free(map->player);
+	free(map);
+	free(line);
+	close(fd);
+	exit(EXIT_FAILURE);
+}
