@@ -8,7 +8,7 @@ MINILXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lbsd -no-pie -lm
 
 NAME = cub3D
 
-NAME_BONUS = cub3d_bonus
+NAME_BONUS = cub3D_bonus
 
 SRCS_D = normal/vanilla/img_create.c normal/vanilla/events.c normal/vanilla/draw_shapes.c normal/vanilla/utils.c \
 		normal/vanilla/raycast.c normal/vanilla/wall_and_textures.c normal/vanilla/line_algo.c \

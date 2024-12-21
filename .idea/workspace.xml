@@ -24,12 +24,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5a503b18-b43e-4391-951d-960a73990013" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub3D" beforeDir="false" afterPath="$PROJECT_DIR$/cub3D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/cub3d_bonus.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/cub3d_bonus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/parse/ft_freedoom.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_freedoom.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/parse/ft_getters.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/ft_getters.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/normal/parse/val_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/normal/parse/val_map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bb.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext_miss.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leak.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map10.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_files/valid/cheese_maze 1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map_files/valid/cheese_maze 1.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_too_long.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +199,7 @@
       <workItem from="1734707227622" duration="557000" />
       <workItem from="1734707908500" duration="9038000" />
       <workItem from="1734769382747" duration="20856000" />
-      <workItem from="1734801520259" duration="1859000" />
+      <workItem from="1734801520259" duration="2989000" />
     </task>
     <servers />
   </component>
